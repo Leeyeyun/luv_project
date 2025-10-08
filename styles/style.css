@@ -1,0 +1,88 @@
+/* ============================== main 시작 ============================== */
+main {margin:0 auto;}
+main > div {width:100%; height:100vh; background-color:#FCFDFF;}
+
+/* ------------------- (main)1.present ------------------- */
+main .intro {
+    background-image:url(../images/bg.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    text-align:center;
+    display:flex;
+    align-items:center; flex-direction:column;
+    justify-content:center;
+}
+main .intro h1 {margin:0 auto;}
+main .intro h1 img {filter:invert(1);}
+main .intro .btm {
+    position:absolute; bottom:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    width:100%;
+    padding:0 80px;
+}
+main .intro .btm p {
+    color:#fff;
+    line-height:1.5;
+}
+main .intro .btm p:nth-child(1) {
+    text-align:left;
+}
+
+/* ------------------- (main)2.lovelanguages ------------------- */
+main .lovelanguages {
+    background:linear-gradient(180deg, #3b3b3b, #FCFDFF);
+    position:relative; overflow:hidden;
+}
+main .lovelanguages .txt {
+    text-align:center; color:#fff;
+    height:100%; position:relative;
+    z-index:5; display:flex; flex-direction:column;
+    justify-content:center;
+}
+main .lovelanguages .txt h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6rem; letter-spacing:-0.05em;
+}
+main .lovelanguages .txt p {
+    font-size:1.5rem; margin-top:50px;
+}
+main .lovelanguages .item_area {
+    position:absolute; left:0; top:0;
+    height:100%; width:100%; z-index:1;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+main .lovelanguages .item_area .item {
+    position:absolute;
+    display:flex; flex-direction:column;
+    align-items:center;
+}
+/* 3d 이미지 각 크기 조절 */
+main .lovelanguages .item_area .item1 > img {width:650px;}
+main .lovelanguages .item_area .item2 > img {width:300px;}
+main .lovelanguages .item_area .item3 > img {width:300px;}
+main .lovelanguages .item_area .item4 > img {width:300px;}
+main .lovelanguages .item_area .item5 > img {width:500px;}
+
+main .lovelanguages .item_area .item > span {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.25rem; letter-spacing:-0.05em;
+    color:#6F6F6F;
+}
+/* 3d 이미지 각 위치 조절 */
+main .lovelanguages .item_area .item1 {top:35%; left:61%;}   /* heart */
+main .lovelanguages .item_area .item2 {top:72%; left:50%;}   /* arrow */
+main .lovelanguages .item_area .item3 {top:5%; left:20%;}   /* hand */
+main .lovelanguages .item_area .item4 {top:22%; left:50%;}   /* wing */
+main .lovelanguages .item_area .item5 {top:44%; left:14%;}   /* ribbon */
+/* 3d 이미지 각 txt 위치 조절 */
+main .lovelanguages .item_area .item1 > span {margin-bottom:-140px; color:#D9D9D9;}
+main .lovelanguages .item_area .item2 > span {}
+main .lovelanguages .item_area .item3 > span {margin-top:-10px; color:#515151;}
+main .lovelanguages .item_area .item4 > span {margin-bottom:5px; color:#515151;}
+main .lovelanguages .item_area .item5 > span {margin-top:-40px;}
+
+/* ------------------- (main)3.cupid ------------------- */

@@ -1,0 +1,55 @@
+// header 스크롤 했을 때 디자인 적용
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+// main-lovelanguages 마우스 트래킹
+const container = document.querySelector('.lovelanguages');
+const items = document.querySelectorAll('.item_area .item');
+
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    mouseX = e.clientX - rect.width / 2;
+    mouseY = e.clientY - rect.height / 2;
+});
+
+function animate() {
+    // 부드럽게 따라가기
+    currentX += (mouseX - currentX) * 0.08;
+    currentY += (mouseY - currentY) * 0.08;
+
+    items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const dx = currentX - (cx - container.offsetWidth / 2);
+        const dy = currentY - (cy - container.offsetHeight / 2);
+
+        // 거리 계산 (루트 안 쓰면 좀 더 빠름)
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        // 거리값을 반대로 감도(weight)로 변환
+        // 가까울수록 감도 큼, 멀수록 감도 작음
+        const maxDist = Math.min(container.offsetWidth, container.offsetHeight);
+        const weight = 1 - Math.min(dist / (maxDist / 2), 1); // 0~1 사이
+
+        const moveX = currentX * weight * 0.04;
+        const moveY = currentY * weight * 0.04;
+
+        item.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();

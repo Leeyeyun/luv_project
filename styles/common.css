@@ -1,0 +1,141 @@
+body {width:100vw;}
+/* header {
+    width:100vw;
+    position:fixed; z-index:999;
+    background-color:gray;
+    padding:45px 80px;
+}
+header .logo {position:absolute; left:80px; top:45px;}
+header .logo a {}
+header .logo a img {width:100%; height:20px;} */
+@font-face {
+    font-family: 'PPMonumentWide';
+    src: url('/fonts/PPMonumentWide-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header {
+    display:flex; border:0;
+    position:fixed; width:100vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 45px 80px;
+    height: 110px; /* 20px 로고 + 45px 위아래 패딩 */
+    box-sizing: border-box;
+    font-family: 'PPMonumentWide', sans-serif;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(7px);
+    transition: all 0.5s ease; /* 여기도 추가 */
+    z-index:100000;
+}
+
+header.scrolled {
+    width:730px;
+    left:50%; top:40px; transform: translateX(-50%);
+    padding:15px; padding-left:20px;
+    height: 72px;
+    background:transparent;
+    background-color:rgba(237, 238, 245, 0.3);
+    border-radius:10px;
+    border:2px solid #fff;
+}
+
+/* test nav 숨기기 */
+header.scrolled .gnb li:nth-child(3) {
+    display:none;
+}
+
+.logo img {
+    height:20px;
+    filter:invert(1);
+}
+
+header.scrolled .logo img {filter:invert(0);}
+
+nav {
+    flex:1;
+    display: flex;
+    justify-content: center;
+}
+
+.gnb {
+    display: flex;
+    list-style: none;
+    gap:100px;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.gnb.scrolled {
+    gap:30px;
+    margin-left:160px;
+}
+
+.gnb > li {
+    position: relative;
+}
+
+header .gnb > li:nth-child(2) {
+  margin: 0 100px; /* FONTS 버튼 양옆 마진 */
+}
+
+header.scrolled .gnb > li:nth-child(2) {
+  margin:0; /* FONTS 버튼 양옆 마진 */
+}
+
+.gnb > li > a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.25rem;
+}
+header.scrolled .gnb > li > a {color:#383838;}
+
+.gnb .sub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gnb > li:hover .sub {
+    display: block;
+}
+
+.gnb .sub li {
+    padding: 5px 20px;
+}
+
+.gnb .sub a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.gnb .sub img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.try a {
+    display: inline-block;
+    font-family: 'PPMonumentWide', sans-serif;
+    text-decoration:none;
+    font-size:1.25rem;
+    color:#fff;
+}
+
+header.scrolled .try a {
+    border-radius:5px;
+    padding:12px 25px;
+    background-color: #fff;
+    color: #6F6F6F;
+}
