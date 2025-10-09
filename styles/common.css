@@ -16,23 +16,30 @@ header .logo a img {width:100%; height:20px;} */
 }
 
 header {
-    display:flex; border:0;
-    position:fixed; width:100vw;
-    align-items: center;
-    justify-content: space-between;
-    padding: 45px 80px;
-    height: 110px; /* 20px 로고 + 45px 위아래 패딩 */
-    box-sizing: border-box;
-    font-family: 'PPMonumentWide', sans-serif;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-    backdrop-filter: blur(7px);
-    transition: all 0.5s ease; /* 여기도 추가 */
+    border:0;
+    position:fixed; width:100%;
+    height: auto;
     z-index:100000;
+    text-align:center;display: flex;
+    justify-content: center;
+    background:transparent; 
 }
 
-header.scrolled {
-    width:730px;
-    left:50%; top:40px; transform: translateX(-50%);
+header .header_wrap {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%; height:110px;
+    margin: 0 auto; padding: 45px 80px;
+    font-family: 'PPMonumentWide', sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(7px);
+    transition: all 0.5s ease;
+}
+
+header.scrolled .header_wrap {
+    width:730px; margin-top: 40px; 
     padding:15px; padding-left:20px;
     height: 72px;
     background:transparent;

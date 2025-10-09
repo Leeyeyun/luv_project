@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'PPMonumentWide';
+    src: url('/fonts/PPMonumentWide-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PPMonumentWide';
+    src: url('/fonts/PPMonumentWide-Black.otf') format('opentype');
+    font-weight:900;
+    font-style: normal;
+}
+
 /* ============================== main 시작 ============================== */
 main {margin:0 auto;}
 main > div {width:100%; height:100vh; background-color:#FCFDFF;}
@@ -86,3 +99,51 @@ main .lovelanguages .item_area .item4 > span {margin-bottom:5px; color:#515151;}
 main .lovelanguages .item_area .item5 > span {margin-top:-40px;}
 
 /* ------------------- (main)3.cupid ------------------- */
+main .cupids {padding:200px 80px 80px;}
+main .cupids .txt {
+    display:flex; justify-content:space-between;
+    align-items:flex-start; margin-bottom:40px;
+}
+main .cupids .txt h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6.25rem; letter-spacing:-0.05rem;
+    line-height:1.1;
+}
+main .cupids .txt h1 span {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6.25rem; letter-spacing:-0.05rem; font-weight:900;
+    color:#FD0722;
+}
+main .cupids .txt p {
+    text-align:right; line-height:1.4;
+    font-size:1.25rem; margin-top:10px;
+}
+
+/* 큐피트 카드 리스트 */
+main .cupids .cupid_list {
+    display:flex; justify-content:space-between;
+    align-items:center;
+}
+main .cupids .cupid_list .cupid {
+    height:650px; overflow:hidden; width:calc((100% - (20px * 4)) / 5);
+    border-radius:15px; position:relative;
+    border:2px solid #fff;
+}
+main .cupids .cupid_list .cupid .front {height:100%;}
+main .cupids .cupid_list .cupid .front img {width:100%;}
+main .cupids .cupid_list .cupid .front .info {
+    position:absolute; width:100%; left:0; bottom:0;
+    text-align:center; background:linear-gradient(0deg, #000 0%, #000 5%, transparent 100%);
+}
+main .cupids .cupid_list .cupid .front .info h3,
+main .cupids .cupid_list .cupid .front .info p {
+    font-family: 'PPMonumentWide', sans-serif;
+    color: #fff; letter-spacing: -0.05rem;
+    font-weight: 400;
+}
+main .cupids .cupid_list .cupid .front .info h3 {
+    font-size:3rem; margin:16px 0;
+}
+main .cupids .cupid_list .cupid .front .info > p {
+    font-size:1rem; margin-bottom:40px;
+}
