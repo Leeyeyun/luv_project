@@ -1,15 +1,3 @@
-@font-face {
-    font-family: 'PPMonumentWide';
-    src: url('/fonts/PPMonumentWide-Regular.otf') format('opentype');
-    font-weight:400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'PPMonumentWide';
-    src: url('/fonts/PPMonumentWide-Black.otf') format('opentype');
-    font-weight:900;
-    font-style: normal;
-}
 
 /* ============================== main 시작 ============================== */
 main {margin:0 auto;}
@@ -42,6 +30,9 @@ main .intro .btm p {
 }
 main .intro .btm p:nth-child(1) {
     text-align:left;
+}
+main .intro .btm p:nth-child(2) {
+    padding-right:115px;
 }
 
 /* ------------------- (main)2.lovelanguages ------------------- */
@@ -112,28 +103,70 @@ main .cupids .txt h1 {
 main .cupids .txt h1 span {
     font-family: 'PPMonumentWide', sans-serif;
     font-size:6.25rem; letter-spacing:-0.05rem; font-weight:900;
-    color:#FD0722;
+    color:rgb(231, 36, 39);
 }
 main .cupids .txt p {
     text-align:right; line-height:1.4;
-    font-size:1.25rem; margin-top:10px;
+    font-size:1.25rem; margin-top:20px;
 }
 
 /* 큐피트 카드 리스트 */
 main .cupids .cupid_list {
     display:flex; justify-content:space-between;
-    align-items:center;
+    align-items:center; height:550px; gap:20px;
 }
 main .cupids .cupid_list .cupid {
-    height:650px; overflow:hidden; width:calc((100% - (20px * 4)) / 5);
+    height:100%; overflow:hidden; width:calc((100% - (20px * 4)) / 5);
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
     border-radius:15px; position:relative;
     border:2px solid #fff;
+    transition: all 0.7s cubic-bezier(0.03, 0.43, 0.42, 1);
 }
-main .cupids .cupid_list .cupid .front {height:100%;}
-main .cupids .cupid_list .cupid .front img {width:100%;}
+
+/* 카드별 기본 배경 */
+main .cupids .cupid_list .acta    { background-image: url('/images/cupids/01_acta.jpg'); }
+main .cupids .cupid_list .tempora { background-image: url('/images/cupids/02_tempora.jpg'); }
+main .cupids .cupid_list .servia  { background-image: url('/images/cupids/03_servia.jpg'); }
+main .cupids .cupid_list .lentus  { background-image: url('/images/cupids/04_lentus.jpg'); }
+main .cupids .cupid_list .giftis  { background-image: url('/images/cupids/05_giftis.jpg'); }
+
+/* hover 시 배경 이미지 교체 */
+main .cupids .cupid_list .acta:hover    { background-image: url('/images/cupids/acta_model.jpg'); }
+main .cupids .cupid_list .tempora:hover { background-image: url('/images/cupids/tempora_model.jpg'); }
+main .cupids .cupid_list .servia:hover  { background-image: url('/images/cupids/servia_model.jpg'); }
+main .cupids .cupid_list .lentus:hover  { background-image: url('/images/cupids/lentus_model.jpg'); }
+main .cupids .cupid_list .giftis:hover  { background-image: url('/images/cupids/giftis_model.jpg'); }
+
+/* hover 시 카드 */
+main .cupids .cupid_list .cupid.active {
+    width:80%; background-position:right;
+}
+main .cupids .cupid_list .cupid.active .front .info {display:none;}
+main .cupids .cupid_list .cupid.active .front .detail_hover {display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between;}
+
+
+/* hover 시 비활성화된 나머지 카드 */
+main .cupids .cupid_list .cupid.inactive {
+    background-color: #999DA6;
+    background-image: none; /* 이미지 제거 */
+}
+main .cupids .cupid_list .cupid.inactive .front .info {
+    padding-bottom:90px; background:none;
+}
+main .cupids .cupid_list .cupid.inactive .front .info > h3 {rotate:-90deg; text-align:left;}
+main .cupids .cupid_list .cupid.inactive .front .info > p {rotate:-90deg; opacity:0;}
+
+main .cupids .cupid_list .cupid .front {
+    height:100%; position:relative;
+}
+main .cupids .cupid_list .cupid .front img {height:100%;}
 main .cupids .cupid_list .cupid .front .info {
     position:absolute; width:100%; left:0; bottom:0;
     text-align:center; background:linear-gradient(0deg, #000 0%, #000 5%, transparent 100%);
+    padding-bottom:40px;
+    transition: all 0.7s cubic-bezier(0.03, 0.43, 0.42, 1);
 }
 main .cupids .cupid_list .cupid .front .info h3,
 main .cupids .cupid_list .cupid .front .info p {
@@ -143,7 +176,130 @@ main .cupids .cupid_list .cupid .front .info p {
 }
 main .cupids .cupid_list .cupid .front .info h3 {
     font-size:3rem; margin:16px 0;
+    transition: all 0.7s cubic-bezier(0.03, 0.43, 0.42, 1);
 }
 main .cupids .cupid_list .cupid .front .info > p {
-    font-size:1rem; margin-bottom:40px;
+    font-size:1rem;
+    transition: all 0.7s cubic-bezier(0.03, 0.43, 0.42, 1);
 }
+/* hover 했을 때 나오는 디테일 정보 디자인 */
+main .cupids .cupid_list .cupid .front .detail_hover {
+    display:none; width:100%; height:100%; padding:60px; color:#fff; padding-bottom:50px;
+    transition: all 0.7s cubic-bezier(0.03, 0.43, 0.42, 1)
+}
+main .cupids .cupid_list .cupid .front .detail_hover .name {
+    margin-top:-20px; margin-bottom:35px;
+}
+/* 각 폰트 부여 */
+main .cupids .cupid_list .acta > .front .detail_hover .name > h3 {
+    font-family: 'LUV_ACTA', sans-serif;
+    font-size:6.25rem;
+}
+main .cupids .cupid_list .tempora > .front .detail_hover .name > h3 {
+    font-family: 'LUV_TEMPORA', sans-serif;
+    font-size:6.25rem;
+}
+main .cupids .cupid_list .servia > .front .detail_hover .name > h3 {
+    font-family: 'LUV_Servia', sans-serif;
+    font-size:5.8rem;
+}
+main .cupids .cupid_list .lentus > .front .detail_hover .name > h3 {
+    font-family: 'LUV_LENTUS', sans-serif;
+    font-size:6.7rem;
+}
+main .cupids .cupid_list .giftis > .front .detail_hover .name > h3 {
+    font-family: 'LUV_GIFTIS', sans-serif;
+    font-size:6.25rem;
+}
+
+main .cupids .cupid_list .cupid .front .detail_hover .name > p {letter-spacing:-0.5px; font-size:1rem; margin-top:10px;}
+main .cupids .cupid_list .cupid .front .detail_hover .detail_info {
+    display:flex; justify-content:flex-start;
+    gap:30px;
+}
+main .cupids .cupid_list .cupid .front .detail_hover .detail_info .left > p {font-weight:600; margin-bottom:10px; line-height:1.2;}
+main .cupids .cupid_list .cupid .front .detail_hover .detail_info .right > p {font-weight:400; margin-bottom:10px; line-height:1.2;}
+/* Try font btn 디자인 */
+main .cupids .cupid_list .cupid .front .detail_hover .btn {
+    width:100%; text-align:center;
+}
+main .cupids .cupid_list .cupid .front .detail_hover .btn a {
+    border:1px solid #fff; border-radius:10px;
+    display:flex; width:100%; height:55px;
+    background-color:rgba(255, 255, 255, 0);
+    transition:all 0.5s ease-out;
+    justify-content:center; align-items:center;
+}
+main .cupids .cupid_list .cupid .front .detail_hover .btn a > span {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.25rem; color:#fff;
+}
+main .cupids .cupid_list .cupid .front .detail_hover .btn a > span strong {margin-left:0; transition:all 0.5s ease-out; font-size:1.25rem;}
+
+main .cupids .cupid_list .cupid .front .detail_hover .btn a:hover {
+    background-color:rgba(255, 255, 255, 0.4);
+}
+main .cupids .cupid_list .cupid .front .detail_hover .btn a:hover > span strong {color:rgb(231, 36, 39); margin-left:5px;}
+
+/* ------------------- (main)4.test ------------------- */
+main .test {
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    position:relative;
+}
+main .test .icon_wrap {
+    position:absolute; left:0; top:0;
+    width:100%; height:100%;
+}
+main .test .icon_wrap > img {
+    width:380px; position:absolute;
+}
+main .test .icon_wrap > img:first-child{
+    transform: scaleX(-1); width:280px;
+    right:20%; top:10%; filter: blur(10px);
+}
+main .test .icon_wrap > img:last-child {
+    left:18%; top:35%; rotate:-25deg;
+    filter: blur(5px);
+}
+main .test .center_area {
+    display:flex; flex-direction:column;
+    align-items:center; z-index:100;
+}
+main .test .center_area > h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6.25rem; line-height:1.2;
+    letter-spacing:-0.05em;
+    text-align:center;
+}
+main .test .center_area .test_desc {
+    text-align:center;
+    padding:30px 135px;
+    border:2px solid #D9D9D9; border-radius:15px;
+    margin:50px 0; background-color:rgba(237, 238, 245, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.03);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+}
+main .test .center_area .test_desc h2 {
+    font-size:1.5rem; font-weight:700;
+    margin-bottom:15px;
+}
+main .test .center_area .test_desc p {
+    font-size:1.25rem; line-height:1.6;
+}
+#start_btn {
+    line-height:76px; display:inline-block;
+    font-weight:500; width:300px;
+    padding:0 70px; border:2px solid #D9D9D9;
+    border-radius:15px; font-size:1.5rem;
+    color:#4D515E; background:rgba(237, 238, 245, 0.3);
+    box-shadow:inset 0 4px 2px rgba(0, 0, 0, 1);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+    transition:all 0.5s ease;
+}
+#start_btn:hover {
+    background:rgba(237, 238, 245, 0.9);
+}
+main .test .front_3d {position:absolute; right:15%; bottom:5%; rotate:10deg; z-index:150;}
+main .test .front_3d img {width:500px;}

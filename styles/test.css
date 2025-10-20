@@ -1,0 +1,181 @@
+/* header 디자인 개별 부여 & 공통 적용 */
+header {transition:all 0.6s ease-out; opacity:1;}
+header.fade {display:none;}
+header .gnb > li > a {color:#383838;}
+.try a {color:#383838}
+header .header_wrap {background:none;}
+.logo img {
+    height:20px;
+    filter:invert(0);
+}
+
+/* section 활성화 비활성화 */
+main section {
+    opacity: 0;
+    visibility: hidden; display:none;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+    width: 100%;
+    height: 100vh;
+    background-color:#FCFDFF;
+}
+
+main section.active {
+    opacity: 1; display:flex;
+    visibility: visible;
+    transition: opacity 0.8s ease;
+}
+
+/* start btn 디자인 */
+.start_btn {
+    line-height:76px;
+    font-weight:500; width:300px;
+    padding:0 70px; border:2px solid #D9D9D9;
+    border-radius:15px; font-size:1.5rem;
+    color:#4D515E; background:rgba(237, 238, 245, 0.3);
+    box-shadow:inset 0 4px 2px rgba(0, 0, 0, 1);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+    transition:all 0.5s ease;
+}
+.start_btn:hover {
+    background:rgba(237, 238, 245, 0.9);
+}
+
+/* ============================== main 시작 ============================== */
+main {margin:0 auto;}
+main > section {width:100%; height:100vh; background-color:#FCFDFF;}
+
+/* ------------------- (main)4.test ------------------- */
+main .test {
+    flex-direction:column; display:flex;
+    justify-content:center; align-items:center;
+    position:relative;
+}
+main .test .icon_wrap {
+    position:absolute; left:0; top:0;
+    width:100%; height:100%;
+}
+main .test .icon_wrap > img {
+    width:380px; position:absolute;
+}
+main .test .icon_wrap > img:first-child{
+    transform: scaleX(-1); width:280px;
+    right:20%; top:10%; filter: blur(10px);
+}
+main .test .icon_wrap > img:last-child {
+    left:18%; top:35%; rotate:-25deg;
+    filter: blur(5px);
+}
+main .test .center_area {
+    display:flex; flex-direction:column;
+    align-items:center; z-index:100;
+}
+main .test .center_area > h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6.25rem; line-height:1.2;
+    letter-spacing:-0.05em;
+    text-align:center;
+}
+main .test .center_area .test_desc {
+    text-align:center;
+    padding:30px 135px;
+    border:2px solid #D9D9D9; border-radius:15px;
+    margin:50px 0; background-color:rgba(237, 238, 245, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.03);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+}
+main .test .center_area .test_desc h2 {
+    font-size:1.5rem; font-weight:700;
+    margin-bottom:15px;
+}
+main .test .center_area .test_desc p {
+    font-size:1.25rem; line-height:1.6;
+}
+main .test .front_3d {position:absolute; right:15%; bottom:5%; rotate:10deg; z-index:150;}
+main .test .front_3d img {width:500px;}
+
+/* ------------------- 2. user_info ------------------- */
+.user {
+    flex-direction:column;
+    align-items:center;
+    padding:60px 200px 70px;
+}
+/* top 이전 버튼&로고 */
+main .user .top_bar {
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 60px 80px;
+    width:100%;
+    position:fixed; top:0;
+}
+
+main .user .top_bar .back_btn {
+    width:34px; display:block;
+}
+
+main .user .top_bar .back_btn img {
+    width:100%;
+}
+
+
+/* 오른쪽 버튼을 시각적으로 숨기되, 공간은 유지 */
+.top_bar .back_btn:last-child {
+    opacity:0;
+    pointer-events:none;
+}
+
+.user .txt_wrap {text-align:center; margin-top:100px; margin-bottom:50px;}
+.user .txt_wrap > h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:4rem; letter-spacing:-0.005em;
+}
+.user .txt_wrap > h2 {
+    font-size:2rem; font-weight:400;
+    margin-top:20px;
+}
+.user #user_form {width:100%;}
+.user #user_form fieldset .user_name {
+    margin-bottom:35px;
+}
+.user #user_form fieldset .user_name:last-child {
+    margin-bottom:65px;
+}
+.user #user_form fieldset .user_name dt {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.5rem; letter-spacing:-0.005em;
+    color:#6f6f6f; margin-bottom:15px;
+}
+.user #user_form fieldset .user_name .input_wrap {
+    width:100%; height:200px; display:flex; justify-content:space-between;
+    align-items:center; border:2px solid #d9d9d9;
+    background:rgba(237, 238, 245, 0.3); border-radius:15px;
+    padding:20px 50px;
+}
+.user #user_form fieldset .user_name:last-child .input_wrap {
+    background:rgba(198, 201, 211, 0.3);
+}
+.user #user_form fieldset .user_name .input_wrap input {
+    width:100%; margin-right:20px; line-height:1.2;
+    background:none; border:none; outline: none;
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2.5rem; letter-spacing:-0.005em;
+
+    text-transform:uppercase;
+}
+.user #user_form fieldset .input_wrap input::placeholder {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2.5rem; letter-spacing:-0.005em;
+    color: #CCD0DC; line-height:200px;
+}
+/* enter 버튼 디자인 */
+.user #user_form fieldset .user_name .enter_btn {
+    all: unset; cursor: pointer;
+    font-size:2.5rem; color:rgb(231, 36, 39);
+    transition:opacity 0.3s ease;
+}
+.user #user_form fieldset .user_name .enter_btn:hover {
+    opacity:0.5;
+}
+
+/* ------------------- 3. question ------------------- */

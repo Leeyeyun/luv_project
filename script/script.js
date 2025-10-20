@@ -53,3 +53,27 @@ function animate() {
 }
 
 animate();
+
+
+const cupids = document.querySelectorAll('.cupid');
+
+cupids.forEach(cupid => {
+    cupid.addEventListener('mouseenter', () => {
+        cupids.forEach(card => {
+        card.classList.remove('active', 'inactive');
+        });
+
+        cupid.classList.add('active');
+        cupids.forEach(card => {
+        if (card !== cupid) {
+            card.classList.add('inactive');
+        }
+        });
+    });
+
+    cupid.addEventListener('mouseleave', () => {
+        cupids.forEach(card => {
+        card.classList.remove('active', 'inactive');
+        });
+    });
+});

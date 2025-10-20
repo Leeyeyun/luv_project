@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'PPMonumentWide';
+    src: url('/fonts/PPMonumentWide-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PPMonumentWide';
+    src: url('/fonts/PPMonumentWide-Black.otf') format('opentype');
+    font-weight:900;
+    font-style: normal;
+}
+/* LUV font */
+@font-face {
+    font-family: 'LUV_ACTA';
+    src: url('/fonts/LUV_ACTA-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LUV_TEMPORA';
+    src: url('/fonts/LUV_TEMPORA-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LUV_Servia';
+    src: url('/fonts/LUV_Servia-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LUV_LENTUS';
+    src: url('/fonts/LUV_LENTUS-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LUV_GIFTIS';
+    src: url('/fonts/LUV_GIFTIS-Regular.otf') format('opentype');
+    font-weight:400;
+    font-style: normal;
+}
