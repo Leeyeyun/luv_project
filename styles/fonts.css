@@ -1,0 +1,256 @@
+/* header 디자인 개별 부여 & 공통 적용 */
+header {transition:all 0.6s ease-out; opacity:1;}
+header.fade {display:none;}
+header .gnb > li > a {color:#383838;}
+.try a {color:#383838}
+header .header_wrap {background:none;}
+.logo img {
+    height:20px;
+    filter:invert(0);
+}
+header .header_wrap {justify-content:center;}
+
+/* main */
+main > div {
+    width: 100%;
+    height: 100vh;
+    margin:0 auto;
+    background-color:#FCFDFF;
+    position:relative;
+    display:flex;
+    justify-content:center; align-items:center;
+}
+
+/* ---------- main intro ---------- */
+main .intro .title_wrap {
+    text-align:center;
+}
+main .intro .title_wrap h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6rem; line-height:1.3;
+    letter-spacing:-0.5px;
+    text-transform:uppercase;
+}
+main .intro .title_wrap .top > h1 {
+    display:flex; flex-direction:column;
+    align-items:center;
+}
+main .intro .title_wrap .top > h1 .change {
+    font-family: 'LUV_ACTA', sans-serif;
+}
+main .intro .title_wrap .icon {
+    height:350px; position:relative;
+    display:flex; justify-content:center;
+    align-items:center;
+}
+main .intro .title_wrap .icon > .icon_name {
+    font-family: 'LUV_ACTA', sans-serif;
+    position:relative; z-index:1;
+    font-size:1.75rem; line-height:1.4;
+    transition: opacity 1s ease-out;
+
+}
+main .intro .title_wrap .icon .icon_3d {
+    position:absolute; z-index:5;
+}
+main .intro .title_wrap .icon .icon_3d img {
+    width:0;
+    transition:all 1s ease-out;
+}
+
+/* btm 마우스스크롤 안내 위치 */
+main .intro .arrow_icn {
+    position:absolute;
+    right:80px; bottom:80px;
+}
+main .intro .arrow_icn img {
+    filter:invert(1);
+}
+
+/* ---------- main overview ---------- */
+main .overview {flex-direction:column;}
+main .overview h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2rem; line-height:1.2;
+    letter-spacing:-0.5px; text-align:center;
+    text-transform:uppercase;
+    margin-bottom:30px; margin-top:100px;
+}
+main .overview .overview_txt {
+    font-family: 'LUV_ACTA', sans-serif;
+    font-size:7rem; line-height:1.3;
+    text-align:center; margin-bottom:80px;
+}
+main .overview .overview_font {
+    display:flex; gap:30px;
+    justify-content:center; align-items:center;
+}
+main .overview .overview_font li {
+    width:220px; height:200px; border-radius:15px;
+    background-color:transparent; border:0;
+    transition:all 0.5s ease;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    pointer-events:auto; cursor:pointer;
+    border:2px solid transparent;
+    opacity:0.5;
+    box-shadow: 5px 8px 5px transparent;
+}
+
+main .overview .overview_font li.hover,
+main .overview .overview_font li.active {
+    background-color:#F4F5F9;
+    border:2px solid rgb(231, 36, 39);
+    opacity:1;
+    box-shadow: 5px 8px 5px rgba(172, 173, 185, 0.25);
+}
+
+main .overview .overview_font li > h2 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.25rem; line-height:1.2;
+    letter-spacing:-0.5px; text-align:center;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+main .overview .overview_font li > p {
+    font-family: 'LUV_ACTA', sans-serif;
+    font-size:6.25rem; text-align:center;
+}
+/* 각 폰트 연결 */
+main .overview .overview_font li:nth-child(2) > p {
+    font-family: 'LUV_TEMPORA', sans-serif;
+}
+main .overview .overview_font li:nth-child(3) > p {
+    font-family: 'LUV_SERVIA', sans-serif;
+    font-size:5.625rem;
+}
+main .overview .overview_font li:nth-child(4) > p {
+    font-family: 'LUV_LENTUS', sans-serif;
+}
+main .overview .overview_font li:nth-child(5) > p {
+    font-family: 'LUV_GIFTIS', sans-serif;
+}
+
+/* ---------- main detail_link ---------- */
+main .detail_link {}
+main .detail_link .link_wrap {
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:25px;
+}
+main .detail_link .link_wrap .font_link {}
+main .detail_link .link_wrap .font_link a {
+    width:800px; height:150px; padding:25px 30px;
+    display:flex; align-items:flex-start;
+    justify-content:center;
+    background:transparent;
+    border-radius:15px; border:0;
+    box-shadow:inset 0 4px 2px transparent;
+    box-shadow: 5px 8px 12px transparent;
+    transition:all 0.6s ease;
+}
+main .detail_link .link_wrap .font_link a:hover {
+    width:1050px; justify-content:space-between;
+    background:rgba(237, 238, 245, 0.3);
+    border-radius:15px; border:2px solid #D9D9D9;
+    box-shadow:inset 0 4px 2px rgba(0, 0, 0, 1);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+}
+main .detail_link .link_wrap .font_link a .number {
+    font-size:1.5rem; font-weight:700; margin-right:10px;
+    color:#CCD0DC;
+    transition:all 0.6s ease;
+}
+main .detail_link .link_wrap .font_link a h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:7.5rem; letter-spacing:-0.5px;
+    line-height:100px; color:#CCD0DC;
+    transition:all 0.6s ease;
+}
+main .detail_link .link_wrap .font_link a:hover .number,
+main .detail_link .link_wrap .font_link a:hover h1 {
+    color:#000;
+}
+main .detail_link .link_wrap .font_link a .arrow_icn {
+    opacity:0;
+    display:none;
+}
+main .detail_link .link_wrap .font_link a:hover .arrow_icn {
+    opacity:1;
+    display:block;
+}
+
+/* 각 폰트마다 폰트 변경 및 세부 디자인 */
+main .detail_link .link_wrap .font_link:first-child a:hover h1 {
+    font-family: 'LUV_ACTA', sans-serif; font-size:8rem;
+    margin-top:-5px;
+}
+main .detail_link .link_wrap .font_link:nth-child(2) a:hover h1 {
+    font-family: 'LUV_TEMPORA', sans-serif;
+    margin-top:-5px;
+}
+main .detail_link .link_wrap .font_link:nth-child(3) a:hover h1 {
+    font-family: 'LUV_SERVIA', sans-serif; font-size:7rem;
+    margin-top:-2px;
+}
+main .detail_link .link_wrap .font_link:nth-child(4) a:hover h1 {
+    font-family: 'LUV_LENTUS', sans-serif; font-size:8.5rem;
+    margin-top:-5px;
+}
+main .detail_link .link_wrap .font_link:nth-child(5) a:hover h1 {
+    font-family: 'LUV_GIFTIS', sans-serif;
+    margin-top:-5px;
+}
+
+/* ---------- main banner ---------- */
+main .banner {
+    height:800px;
+    background-color:#F4F5F9;
+    flex-direction:column;
+    text-align:center;
+}
+main .banner h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:4.375rem; letter-spacing:-0.5px;
+    line-height:1.3;
+    text-transform:uppercase;
+}
+main .banner h1 span {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:4.375rem; letter-spacing:-0.5px;
+    line-height:1.3; font-weight:900;
+    text-transform:uppercase; color:rgb(231, 36, 39);
+}
+main .banner h2 {
+    font-size:1.25rem; font-weight:500;
+    line-height:1.7; margin:10px 0 120px;
+}
+main .banner .tryfont_link {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.875rem; letter-spacing:-0.5px;
+    padding:0 60px 20px 50px;
+    color:#6F6F6F; position:relative;
+    transition:opacity 0.5s ease;
+}
+main .banner .tryfont_link:hover {
+    opacity:0.7;
+}
+main .banner .tryfont_link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #6F6F6F;
+}
+main .banner .tryfont_link::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom:-14px;
+    width: 30px;
+    height: 25px;
+    border-right: 2px solid #6F6F6F;
+    transform:rotate(-45deg);
+}

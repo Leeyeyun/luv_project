@@ -1,3 +1,6 @@
+main {
+    height:100vh; overflow:hidden;
+}
 /* header 디자인 개별 부여 & 공통 적용 */
 header {transition:all 0.6s ease-out; opacity:1;}
 header.fade {display:none;}
@@ -8,6 +11,7 @@ header .header_wrap {background:none;}
     height:20px;
     filter:invert(0);
 }
+header .header_wrap {justify-content:center;}
 
 /* section 활성화 비활성화 */
 main section {
@@ -17,6 +21,7 @@ main section {
     width: 100%;
     height: 100vh;
     background-color:#FCFDFF;
+    overflow-x: hidden; overflow-y: hidden;
 }
 
 main section.active {
@@ -26,7 +31,7 @@ main section.active {
 }
 
 /* start btn 디자인 */
-.start_btn {
+.start_btn, .go_btn {
     line-height:76px;
     font-weight:500; width:300px;
     padding:0 70px; border:2px solid #D9D9D9;
@@ -35,8 +40,9 @@ main section.active {
     box-shadow:inset 0 4px 2px rgba(0, 0, 0, 1);
     box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
     transition:all 0.5s ease;
+    outline:none;
 }
-.start_btn:hover {
+.start_btn:hover, .go_btn:hover {
     background:rgba(237, 238, 245, 0.9);
 }
 
@@ -44,8 +50,8 @@ main section.active {
 main {margin:0 auto;}
 main > section {width:100%; height:100vh; background-color:#FCFDFF;}
 
-/* ------------------- (main)4.test ------------------- */
-main .test {
+/* ------------------- 1.test ------------------- */
+main .test, main .question {
     flex-direction:column; display:flex;
     justify-content:center; align-items:center;
     position:relative;
@@ -108,6 +114,7 @@ main .user .top_bar {
     padding: 60px 80px;
     width:100%;
     position:fixed; top:0;
+    display:none;
 }
 
 main .user .top_bar .back_btn {
@@ -179,3 +186,141 @@ main .user .top_bar .back_btn img {
 }
 
 /* ------------------- 3. question ------------------- */
+/* title 디자인 */
+main .question {
+    padding:0 80px;
+}
+main .question .question_list {
+    position: relative;
+    width:100%; display:flex;
+    justify-content:flex-start;
+}
+main .question .question_list .question_item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+main .question .question_list .question_item.current {
+    display: block;
+    opacity: 1;
+}
+main .question .question_nav {
+    display:flex; justify-content:space-between;
+    align-items:center; width:100%;
+    margin-bottom:128px;
+}
+main .question .question_nav button {
+    background:none; outline:none;
+    border:0; transition:all 0.3s ease;
+}
+main .question .question_nav button:hover {
+    opacity:0.5;
+}
+main .question .question_nav button > img {
+    height:48px;
+}
+main .question .question_nav .next_btn {
+    rotate:180deg;
+}
+main .question .title_wrap {}
+main .question .title_wrap > * {
+    text-align:center;
+}
+main .question .title_wrap .q_num {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:3rem; letter-spacing:-0.005em;
+    line-height:1.0;
+    transition: opacity 0.5s ease;
+    opacity:1;
+}
+main .question .title_wrap .ask {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:4rem; letter-spacing:-0.5px;
+    line-height:1.0; margin:25px 0 30px;
+}
+main .question .title_wrap .ask_ko {
+    font-size:2rem; line-height:1.2;
+    font-weight:600;
+}
+/* answer option 디자인 */
+main .question .answer_area {
+    display:flex; justify-content:center;
+    align-items:center;
+    gap:100px;
+    transition: opacity 0.5s ease;
+}
+main .question .answer_area .option .option_txt {
+    text-align:center; padding:65px 90px;
+    box-shadow:inset 0 0 15px rgba(0, 0, 0, 0.05);
+    border:2px solid #E5E5E7; border-radius:15px;
+    margin-bottom:15px;
+}
+main .question .answer_area .option p {
+    font-size:2rem; color:#8B8B8F; font-weight:500;
+}
+main .question .answer_area .option p:nth-child(2) {
+    font-weight:600; color:#4D515E;
+    margin:40px 0 20px;
+}
+main .question .answer_area .option p:last-child {
+    font-size:1.75rem; color:#4D515E;
+}
+main .question .answer_area .option .user_btns {
+    display:flex; justify-content:space-between;
+    gap:20px;
+    transition: opacity 0.5s ease;
+    opacity:0;
+}
+main .question .answer_area .option .user_btns .user_btn {
+    padding:30px 105px; display:flex; flex-direction:column;
+    justify-content:space-between; align-items:center;
+    width:405px; height:125px;
+    border:2px solid #d9d9d9; border-radius:15px;
+    box-shadow:inset 0 0 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+    background-color:rgb(248, 248, 252);
+    transition:all 0.3s ease;
+}
+main .question .answer_area .option .user_btns .user_btn:hover {
+    filter:brightness(0.95);
+}
+main .question .answer_area .option .user_btns .user_btn.selected {border:2px solid #E72427}
+main .question .answer_area .option .user_btns .user_btn:last-child {
+    background-color:rgb(236, 237, 242);
+}
+main .question .answer_area .option .user_btns .user_btn span {
+    color:#4D515E; text-transform:uppercase;
+}
+main .question .answer_area .option .user_btns .user_btn span:last-child {
+    font-family: 'PPMonumentWide', sans-serif;
+    letter-spacing:-0.005em;
+    font-size:1.75rem; color:#6f6f6f;
+}
+
+/* progress 디자인 */
+main .question .progress_wrap {
+    padding:0 80px; width:100%; position:fixed;
+    left:0; bottom:80px;
+}
+main .question .progress_wrap .progress_txt {
+    width:100%; display:flex; justify-content:space-between;
+    margin-bottom:18px;
+}
+main .question .progress_wrap .progress_txt p {
+    font-size: 1.125rem; color:#A9A8B1;
+    line-height:1.5; letter-spacing:-0.005em;
+    text-align:left;
+}
+main .question .progress_wrap .progress_txt p:last-child {
+    text-align:right;
+}
+main .question .progress_wrap .progress_bar {
+    width:100%; height:6px; border-radius:3px;
+    background-color:rgb(228, 231, 237);
+    position:relative;
+}
+main .question .progress_wrap .progress_bar .progress_fill {
+    background-color:#999DA6; width:0; height:100%;
+    position:absolute; left:0; border-radius:3px;
+    transition:width 0.5s ease;
+}
