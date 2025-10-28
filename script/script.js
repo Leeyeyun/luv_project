@@ -35,21 +35,57 @@ const cupids = document.querySelectorAll('.cupid');
 
 cupids.forEach(cupid => {
     cupid.addEventListener('mouseenter', () => {
-        cupids.forEach(card => {
-        card.classList.remove('active', 'inactive');
-        });
-
+        cupids.forEach(card => card.classList.remove('active', 'inactive'));
         cupid.classList.add('active');
         cupids.forEach(card => {
-        if (card !== cupid) {
-            card.classList.add('inactive');
+        if (card !== cupid) card.classList.add('inactive');
+        });
+
+        cupids.forEach(card => {
+        const h3 = card.querySelector('.front .info > h3');
+        const p = card.querySelector('.front .info > p');
+        if (!h3 || !p) return;
+
+        h3.style.transition = 'opacity 0.4s ease';
+        p.style.transition = 'opacity 0.4s ease';
+
+        if (card.classList.contains('inactive')) {
+            // 1. 사라지기
+            h3.style.opacity = '0';
+            p.style.opacity = '0';
+
+            // 2. 사라진 상태에서 회전 적용 (안 보임)
+            setTimeout(() => {
+            h3.style.transform = 'rotate(-90deg)';
+            }, 400);
+
+            // 3. 회전된 상태로 다시 등장 (h3만)
+            setTimeout(() => {
+            h3.style.opacity = '1';
+            }, 500);
+        } else {
+            // active 카드 유지
+            h3.style.opacity = '1';
+            h3.style.transform = 'rotate(0deg)';
+            p.style.opacity = '1';
         }
         });
     });
 
     cupid.addEventListener('mouseleave', () => {
+        // 상태 복귀
         cupids.forEach(card => {
         card.classList.remove('active', 'inactive');
+        const h3 = card.querySelector('.front .info > h3');
+        const p = card.querySelector('.front .info > p');
+        if (!h3 || !p) return;
+
+        h3.style.transition = 'opacity 0.4s ease';
+        p.style.transition = 'opacity 0.4s ease';
+
+        h3.style.opacity = '1';
+        h3.style.transform = 'rotate(0deg)';
+        p.style.opacity = '1'; // hover 해제 시 p 다시 복귀
         });
     });
 });

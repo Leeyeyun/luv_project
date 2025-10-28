@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('header nav');
     const tryBtn = document.querySelector('header .try');
     const questionItems = document.querySelectorAll('.question_item');
+    const loadingPage = document.querySelector('.loading');
     const nextBtns = document.querySelectorAll('.next_btn');
     const prevBtns = document.querySelectorAll('.prev_btn');
 
@@ -132,45 +133,109 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchQuestion(current, target) {
         if (!target) return;
 
-        // 모든 li 초기화 (겹침 방지)
         questionItems.forEach(item => {
-            item.style.transition = 'none';
-            item.style.opacity = '0';
-            item.style.display = 'none';
-            item.classList.remove('current');
-            item.querySelectorAll('.user_btns').forEach(btn => btn.style.opacity = '0');
+        item.style.transition = 'none';
+        item.style.opacity = '0';
+        item.style.display = 'none';
+        item.classList.remove('current');
+        item.querySelectorAll('.user_btns').forEach(btn => btn.style.opacity = '0');
         });
 
-        // target 준비
         target.style.display = 'block';
         target.style.opacity = '0';
         target.classList.add('current');
 
-        // 살짝 텀 두고 페이드인
         setTimeout(() => {
         target.style.transition = 'opacity 0.5s ease';
         target.style.opacity = '1';
-
-        // ✅ 애니메이션 실행
         triggerQuestionAnimation();
         }, 10);
     }
 
     // 🚩 next 버튼 클릭
     nextBtns.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
         const current = questionItems[index];
         const next = questionItems[index + 1];
-        switchQuestion(current, next);
-        });
-    });
-
     // 🚩 prev 버튼 클릭
     prevBtns.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
         const current = questionItems[index];
         const prev = questionItems[index - 1];
+        if (!prev) return; // 첫 질문에서는 이전 없음
+
         switchQuestion(current, prev);
+    });
+    });
+
+        // ✅ 마지막 질문(Q5) → loading 이동 처리
+        // 🚩 마지막 질문(Q5) → loading 이동 처리
+        if (!next && loadingPage) {
+        // header 페이드아웃
+        if (header) {
+            header.style.transition = 'opacity 0.5s ease';
+            header.style.opacity = '0';
+            setTimeout(() => {
+            if (nav) nav.style.display = 'none';
+            if (tryBtn) tryBtn.style.display = 'none';
+            }, 500);
+        }
+
+        // 현재 질문 페이드아웃
+        current.style.transition = 'opacity 0.5s ease';
+        current.style.opacity = '0';
+
+        // ✅ loading 등장
+        setTimeout(() => {
+            current.style.display = 'none';
+            loadingPage.style.display = 'flex';
+            loadingPage.style.opacity = '0';
+
+            setTimeout(() => {
+            loadingPage.style.transition = 'opacity 0.6s ease';
+            loadingPage.style.opacity = '1';
+            }, 10);
+
+            // ✅ 7초 후 result 섹션으로 자동 전환
+            // ✅ 7초 후 result 섹션으로 자동 전환
+            setTimeout(() => {
+            const resultSection = document.querySelector('.result');
+            const questionSection = document.querySelector('.question'); // ✅ 추가
+            if (!resultSection || !questionSection) return;
+
+            // question section 전체 페이드아웃
+            questionSection.style.transition = 'opacity 0.6s ease';
+            questionSection.style.opacity = '0';
+
+            setTimeout(() => {
+                questionSection.style.display = 'none'; // 완전히 숨김
+
+                // ✅ result section 등장
+                resultSection.style.display = 'flex';
+                resultSection.style.opacity = '0';
+                resultSection.classList.add('active');
+
+                setTimeout(() => {
+                resultSection.style.transition = 'opacity 0.6s ease';
+                resultSection.style.opacity = '1';
+
+                // ✅ header 다시 나타나기
+                if (header) {
+                    header.style.display = 'block';
+                    header.style.transition = 'opacity 0.6s ease';
+                    header.style.opacity = '1';
+                }
+
+                }, 1000);
+            }, 600); // question 사라진 후 result 등장
+            }, 6200); // ⏱️ 7초 후 실행
+        }, 500);
+
+        return;
+        }
+
+        // 일반 질문 간 전환
+        switchQuestion(current, next);
         });
     });
 });

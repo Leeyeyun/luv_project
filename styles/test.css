@@ -83,7 +83,7 @@ main .test .center_area > h1 {
 }
 main .test .center_area .test_desc {
     text-align:center;
-    padding:30px 135px;
+    padding:60px 135px;
     border:2px solid #D9D9D9; border-radius:15px;
     margin:50px 0; background-color:rgba(237, 238, 245, 0.3);
     backdrop-filter: blur(10px);
@@ -193,12 +193,46 @@ main .question {
 main .question .question_list {
     position: relative;
     width:100%; display:flex;
-    justify-content:flex-start;
+    justify-content:center;
 }
 main .question .question_list .question_item {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease;
+}
+main .question .question_list .loading {
+    display: none;   /* 처음엔 완전히 숨김 */
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.6s ease;
+    text-align:center; width:100%;
+}
+main .question .question_list .loading > h1 {
+    display:flex; align-items:center;
+
+}
+main .question .question_list .loading > h1 > img {
+    width:190px; margin-left:160px;
+}
+main .question .question_list .loading > h1 .word_slider {
+    margin-left:10px;
+    display:flex; flex-direction:column;
+    align-items:flex-start; justify-content:flex-start;
+    height:80px; overflow:hidden; width:max-content;
+}
+main .question .question_list .loading > h1 .word_slider > img {
+    animation: slideWords 7s cubic-bezier(0.25, 1, 0.3, 1) infinite;
+    height:100%; padding:10px 0;
+}
+main .question .question_list .loading > h1 .word_slider > img:last-child {
+    padding-top:12px;
+}
+
+main .question .question_list .loading > p {
+    font-size:1.5rem; font-weight:600;
+    margin-top:30px;
 }
 main .question .question_list .question_item.current {
     display: block;
@@ -323,4 +357,29 @@ main .question .progress_wrap .progress_bar .progress_fill {
     background-color:#999DA6; width:0; height:100%;
     position:absolute; left:0; border-radius:3px;
     transition:width 0.5s ease;
+}
+
+/* ------------------- 4. result ------------------- */
+main .result {
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:0 120px;
+}
+main .result > h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:8.125rem; letter-spacing:-0.5px;
+    margin-bottom:105px;
+}
+main .result > h1 strong {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:8.125rem; letter-spacing:-0.5px;
+    font-weight:900; color:#E72427;
+}
+main .result .result_wrap {
+    display:flex; justify-content:space-between;
+    width:100%;
+}
+main .result .result_wrap > * {
+    width:calc((100% - 40px) / 2); height:520px;
+    background-color:lightblue;
 }

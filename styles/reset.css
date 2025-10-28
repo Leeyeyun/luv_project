@@ -34,9 +34,10 @@ input, button, label {cursor:pointer;}
 }
 /* 스크롤바 꾸미기 */
 body::-webkit-scrollbar {
-    background:#EFF1FA;
-    width:9px; height:10px;
+    background:transparent;
+    width:7px; height:10px;
 }
 body::-webkit-scrollbar-thumb {
     background:#999DA6;
+    border-radius:4px;
 }

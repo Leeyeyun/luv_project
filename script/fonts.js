@@ -1,11 +1,11 @@
 // 폰트 메인 페이지 인트로 루프 애니메이션
 
 const icons = [
-    { img: './images/3d_img_2/3d01_heart.png',  text: 'ACTA<br>Words of Affirmation', font: 'LUV_ACTA' },
-    { img: './images/3d_img_2/3d02_arrow.png',  text: 'TEMPORA<br>Quality Time',       font: 'LUV_TEMPORA' },
-    { img: './images/3d_img_2/3d03_wing.png',   text: 'SERVIA<br>Acts of Service',     font: 'LUV_SERVIA' },
-    { img: './images/3d_img_2/3d04_hand.png',   text: 'LENTUS<br>Physical Love',       font: 'LUV_LENTUS' },
-    { img: './images/3d_img_2/3d05_ribbon.png', text: 'GIFTIS<br>Receiving Gifts',     font: 'LUV_GIFTIS' }
+    { img: './images/3d/3d_img_2/3d01_heart.png',  text: 'ACTA<br>Words of Affirmation', font: 'LUV_ACTA' },
+    { img: './images/3d/3d_img_2/3d02_arrow.png',  text: 'TEMPORA<br>Quality Time',       font: 'LUV_TEMPORA' },
+    { img: './images/3d/3d_img_2/3d03_wing.png',   text: 'SERVIA<br>Acts of Service',     font: 'LUV_SERVIA' },
+    { img: './images/3d/3d_img_2/3d04_hand.png',   text: 'LENTUS<br>Physical Love',       font: 'LUV_LENTUS' },
+    { img: './images/3d/3d_img_2/3d05_ribbon.png', text: 'GIFTIS<br>Receiving Gifts',     font: 'LUV_GIFTIS' }
     ]
 
     let i = 0
@@ -45,18 +45,18 @@ const icons = [
     setTimeout(() => {
         img.style.opacity = '0'
         iconName.style.opacity = '1'
-    }, 2000)
+    }, 1500)
 
     // 텍스트 2초 유지 후 사라짐
     setTimeout(() => {
         iconName.style.opacity = '0'
-    }, 3700)
+    }, 3200)
 
     // 다음 루프 (총 템포 4.2초)
     setTimeout(() => {
         i = (i + 1) % icons.length
         loop()
-    }, 5000)
+    }, 4000)
 }
 
 loop()

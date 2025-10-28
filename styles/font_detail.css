@@ -83,7 +83,7 @@ main .information .information_wrap .description {
     font-size:1.25rem; line-height:1.7;
 }
 main .information .font_icon {
-    height:calc(100% - 160px); width:30%;
+    height:100%; width:30%;
     position:absolute; right:0; top:0;
 }
 main .information .font_icon > img {
@@ -97,6 +97,9 @@ main .information .font_icon > img {
     max-height: 100%;      /* 부모 높이 안 넘게 */
     object-fit: contain;   /* 비율 유지하면서 맞추기 */
     pointer-events: none;  /* 클릭 방지 */
+}
+main .information .font_icon > img:last-child {
+    width:420px;
 }
 
 /* main 3. slogan */
@@ -115,25 +118,113 @@ main .slogan .up_img {
     bottom: -100%;               /* 처음엔 부모 맨 위에서 시작 */
     left: 50%;             /* 가운데 정렬 */
     transform: translateX(-50%);  /* 가로 중앙 맞추기 */
-    transition: bottom 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* main 4. details */
-main .details {
-
-}
+main .details {height:max-content; padding-bottom:200px;}
 main .details .txt_wrap {
     display:flex; align-items:flex-start;
     justify-content:space-between;
     margin-bottom:60px;
 }
-main .details .txt_wrap .desc_wrap {
+main .details .txt_wrap .ko_en {
     width:570px; text-align:left;
 }
-main .details .txt_wrap .desc_wrap p {
+main .details .txt_wrap .ko_en > p {
     font-size:1.25rem; line-height:1.7;
     font-weight:400;
 }
-main .details .txt_wrap .desc_wrap p:first-child {
+main .details .txt_wrap .ko_en > p:first-child {
     margin-bottom:10px;
+}
+
+main .details .desc_wrap {
+    width:100%; gap:20px;
+    display:flex; flex-wrap:wrap;
+}
+main .details .desc_wrap .desc_item {
+    width:calc((100% - 20px) / 2); height:450px;
+    background-color:#F6F8FB;
+    padding:45px 50px;
+    position:relative;
+    /* display:flex; justify-content:space-between; */
+}
+main .details .desc_wrap .desc_item:first-child {
+    width:100%;
+}
+main .details .desc_wrap .desc_item .wrap {
+    text-align:left;
+    position:absolute; left:50px; top:45px;
+}
+main .details .desc_wrap .desc_item .desc_img {
+    width:450px;
+    position:absolute; right:0; bottom:0;
+}
+main .details .desc_wrap .desc_item:first-child > .desc_img {
+    width:700px; right:50px; bottom:45px;
+}
+main .details .desc_wrap .desc_item .desc_img > img {
+    width:100%;
+}
+
+main .details .desc_wrap .desc_item .wrap .num {
+    font-family: 'PPMonumentWide', sans-serif;
+    letter-spacing:-0.5px; line-height:1.3;
+    font-size:1.25rem; color:#E72427;
+}
+main .details .desc_wrap .desc_item .wrap h3 {
+    font-family: 'PPMonumentWide', sans-serif;
+    letter-spacing:-0.5px; line-height:1.3;
+    font-size:1.5rem;
+}
+main .details .desc_wrap .desc_item .wrap p:last-child {
+    font-size:1.25rem; font-weight:400;
+    line-height:1.6; margin-top:10px;
+}
+
+/* main 5. details_red */
+main .details_red {
+    background-color:#E72427;
+    height: max-content;
+    padding:80px 0;
+}
+main .details_red .title {
+    margin-bottom:220px;
+    padding-left:80px;
+}
+main .details_red .font_area {
+    text-align:center;
+}
+main .details_red .font_area > p {
+    font-family: 'LUV_ACTA', sans-serif;
+    font-size:6.875rem; line-height:170px;
+}
+main .details_red .font_area > p:nth-child(2) {
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+}
+main .details_red > p {
+    text-align:center; font-size:1.25rem;
+    font-weight:400; line-height:1.6; margin-top:180px;
+}
+
+/* main 5. typing */
+main .typing {
+    padding:80px;
+    background-color:#000000;
+}
+main .typing .top {
+    display:flex; align-items:center;
+    justify-content:space-between;
+
+}
+main .typing .top button {
+    border:none; background:none;
+}
+main .typing .top .control_panel {
+    display:flex; gap:100px;
+}
+main .typing .top .control_panel .toggle_area {
+    display:flex; align-items:center;
 }
