@@ -1,42 +1,56 @@
 main {
     height:100vh; overflow:hidden;
+    margin:0 auto;
 }
-/* header 디자인 개별 부여 & 공통 적용 */
-header {transition:all 0.6s ease-out; opacity:1;}
+
+/* ============================== header ============================== */
+header {
+    transition:all 0.6s ease-out; 
+    opacity:1;
+}
 header.fade {display:none;}
 header .gnb > li > a {color:#383838;}
-.try a {color:#383838}
-header .header_wrap {background:none;}
+.try a {color:#383838;}
+header .header_wrap {
+    background:none;
+    justify-content:center;
+}
 .logo img {
     height:20px;
     filter:invert(0);
 }
-header .header_wrap {justify-content:center;}
 
-/* section 활성화 비활성화 */
-main section {
-    opacity: 0;
-    visibility: hidden; display:none;
-    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
-    width: 100%;
-    height: 100vh;
+/* ============================== section 공통 ============================== */
+main > section {
+    width:100%; 
+    height:100vh; 
     background-color:#FCFDFF;
-    overflow-x: hidden; overflow-y: hidden;
+    opacity: 0;
+    visibility: hidden; 
+    display:none;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+    overflow-x: hidden; 
+    overflow-y: hidden;
 }
 
 main section.active {
-    opacity: 1; display:flex;
+    opacity: 1; 
+    display:flex;
     visibility: visible;
     transition: opacity 0.8s ease;
 }
 
-/* start btn 디자인 */
+/* ============================== 버튼 공통 ============================== */
 .start_btn, .go_btn {
     line-height:76px;
-    font-weight:500; width:300px;
-    padding:0 70px; border:2px solid #D9D9D9;
-    border-radius:15px; font-size:1.5rem;
-    color:#4D515E; background:rgba(237, 238, 245, 0.3);
+    font-weight:500; 
+    width:300px;
+    padding:0 70px; 
+    border:2px solid #D9D9D9;
+    border-radius:15px; 
+    font-size:1.5rem;
+    color:#4D515E; 
+    background:rgba(237, 238, 245, 0.3);
     box-shadow:inset 0 4px 2px rgba(0, 0, 0, 1);
     box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
     transition:all 0.5s ease;
@@ -46,99 +60,99 @@ main section.active {
     background:rgba(237, 238, 245, 0.9);
 }
 
-/* ============================== main 시작 ============================== */
-main {margin:0 auto;}
-main > section {width:100%; height:100vh; background-color:#FCFDFF;}
-
-/* ------------------- 1.test ------------------- */
-main .test, main .question {
-    flex-direction:column; display:flex;
-    justify-content:center; align-items:center;
+/* ============================== 1. test ============================== */
+main .test {
+    flex-direction:column; 
+    display:flex;
+    justify-content:center; 
+    align-items:center;
     position:relative;
 }
 main .test .icon_wrap {
-    position:absolute; left:0; top:0;
-    width:100%; height:100%;
+    position:absolute; 
+    left:0; 
+    top:0;
+    width:100%; 
+    height:100%;
 }
 main .test .icon_wrap > img {
-    width:380px; position:absolute;
+    width:380px; 
+    position:absolute;
 }
-main .test .icon_wrap > img:first-child{
-    transform: scaleX(-1); width:280px;
-    right:20%; top:10%; filter: blur(10px);
+main .test .icon_wrap > img:first-child {
+    transform: scaleX(-1); 
+    width:280px;
+    right:20%; 
+    top:10%; 
+    filter: blur(10px);
 }
 main .test .icon_wrap > img:last-child {
-    left:18%; top:35%; rotate:-25deg;
+    left:18%; 
+    top:35%; 
+    rotate:-25deg;
     filter: blur(5px);
 }
 main .test .center_area {
-    display:flex; flex-direction:column;
-    align-items:center; z-index:100;
+    display:flex; 
+    flex-direction:column;
+    align-items:center; 
+    z-index:100;
 }
 main .test .center_area > h1 {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:6.25rem; line-height:1.2;
+    font-size:6.25rem; 
+    line-height:1.2;
     letter-spacing:-0.05em;
     text-align:center;
 }
 main .test .center_area .test_desc {
     text-align:center;
     padding:60px 135px;
-    border:2px solid #D9D9D9; border-radius:15px;
-    margin:50px 0; background-color:rgba(237, 238, 245, 0.3);
+    border:2px solid #D9D9D9; 
+    border-radius:15px;
+    margin:50px 0; 
+    background-color:rgba(237, 238, 245, 0.3);
     backdrop-filter: blur(10px);
     box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.03);
     box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
 }
 main .test .center_area .test_desc h2 {
-    font-size:1.5rem; font-weight:700;
+    font-size:1.5rem; 
+    font-weight:700;
     margin-bottom:15px;
 }
 main .test .center_area .test_desc p {
-    font-size:1.25rem; line-height:1.6;
+    font-size:1.25rem; 
+    line-height:1.6;
 }
-main .test .front_3d {position:absolute; right:15%; bottom:5%; rotate:10deg; z-index:150;}
+main .test .front_3d {
+    position:absolute; 
+    right:15%; 
+    bottom:5%; 
+    rotate:10deg; 
+    z-index:150;
+}
 main .test .front_3d img {width:500px;}
 
-/* ------------------- 2. user_info ------------------- */
+/* ============================== 2. user ============================== */
 .user {
     flex-direction:column;
     align-items:center;
     padding:60px 200px 70px;
 }
-/* top 이전 버튼&로고 */
-main .user .top_bar {
-    display:flex;
-    align-items: center;
-    justify-content:space-between;
-    padding: 60px 80px;
-    width:100%;
-    position:fixed; top:0;
-    display:none;
+.user .txt_wrap {
+    text-align:center; 
+    margin-top:100px; 
+    margin-bottom:50px;
 }
-
-main .user .top_bar .back_btn {
-    width:34px; display:block;
-}
-
-main .user .top_bar .back_btn img {
-    width:100%;
-}
-
-
-/* 오른쪽 버튼을 시각적으로 숨기되, 공간은 유지 */
-.top_bar .back_btn:last-child {
-    opacity:0;
-    pointer-events:none;
-}
-
-.user .txt_wrap {text-align:center; margin-top:100px; margin-bottom:50px;}
 .user .txt_wrap > h1 {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:4rem; letter-spacing:-0.005em;
+    font-size:4rem; 
+    letter-spacing:-0.005em;
 }
 .user .txt_wrap > h2 {
-    font-size:2rem; font-weight:400;
+    font-size:2rem; 
+    font-weight:400;
     margin-top:20px;
 }
 .user #user_form {width:100%;}
@@ -150,49 +164,68 @@ main .user .top_bar .back_btn img {
 }
 .user #user_form fieldset .user_name dt {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:1.5rem; letter-spacing:-0.005em;
-    color:#6f6f6f; margin-bottom:15px;
+    font-size:1.5rem; 
+    letter-spacing:-0.005em;
+    color:#6f6f6f; 
+    margin-bottom:15px;
 }
 .user #user_form fieldset .user_name .input_wrap {
-    width:100%; height:200px; display:flex; justify-content:space-between;
-    align-items:center; border:2px solid #d9d9d9;
-    background:rgba(237, 238, 245, 0.3); border-radius:15px;
+    width:100%; 
+    height:170px; 
+    display:flex; 
+    justify-content:space-between;
+    align-items:center; 
+    border:2px solid #d9d9d9;
+    background:rgba(237, 238, 245, 0.3); 
+    border-radius:15px;
     padding:20px 50px;
 }
 .user #user_form fieldset .user_name:last-child .input_wrap {
     background:rgba(198, 201, 211, 0.3);
 }
 .user #user_form fieldset .user_name .input_wrap input {
-    width:100%; margin-right:20px; line-height:1.2;
-    background:none; border:none; outline: none;
+    width:100%; 
+    margin-right:20px; 
+    line-height:1.2;
+    background:none; 
+    border:none; 
+    outline: none;
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:2.5rem; letter-spacing:-0.005em;
-
+    font-size:2.5rem; 
+    letter-spacing:-0.005em;
     text-transform:uppercase;
 }
 .user #user_form fieldset .input_wrap input::placeholder {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:2.5rem; letter-spacing:-0.005em;
-    color: #CCD0DC; line-height:200px;
+    font-size:2.5rem; 
+    letter-spacing:-0.005em;
+    color: #CCD0DC; 
+    line-height:200px;
 }
-/* enter 버튼 디자인 */
 .user #user_form fieldset .user_name .enter_btn {
-    all: unset; cursor: pointer;
-    font-size:2.5rem; color:rgb(231, 36, 39);
+    all: unset; 
+    cursor: pointer;
+    font-size:2.5rem; 
+    color:rgb(231, 36, 39);
     transition:opacity 0.3s ease;
 }
 .user #user_form fieldset .user_name .enter_btn:hover {
     opacity:0.5;
 }
 
-/* ------------------- 3. question ------------------- */
-/* title 디자인 */
+/* ============================== 3. question ============================== */
 main .question {
+    flex-direction:column; 
+    display:flex;
+    justify-content:center; 
+    align-items:center;
+    position:relative;
     padding:0 80px;
 }
 main .question .question_list {
     position: relative;
-    width:100%; display:flex;
+    width:100%; 
+    display:flex;
     justify-content:center;
 }
 main .question .question_list .question_item {
@@ -200,52 +233,64 @@ main .question .question_list .question_item {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
+main .question .question_list .question_item.current {
+    display: block;
+    opacity: 1;
+}
 main .question .question_list .loading {
-    display: none;   /* 처음엔 완전히 숨김 */
+    display: none;
     opacity: 0;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transition: opacity 0.6s ease;
-    text-align:center; width:100%;
+    text-align:center; 
+    width:100%;
 }
 main .question .question_list .loading > h1 {
-    display:flex; align-items:center;
-
+    display:flex; 
+    align-items:center;
 }
 main .question .question_list .loading > h1 > img {
-    width:190px; margin-left:160px;
+    width:190px; 
+    margin-left:160px;
 }
 main .question .question_list .loading > h1 .word_slider {
-    margin-left:10px;
-    display:flex; flex-direction:column;
-    align-items:flex-start; justify-content:flex-start;
-    height:80px; overflow:hidden; width:max-content;
+    margin-left:15px;
+    display:flex; 
+    flex-direction:column;
+    align-items:flex-start; 
+    justify-content:flex-start;
+    height:80px; 
+    overflow:hidden; 
+    width:max-content;
 }
 main .question .question_list .loading > h1 .word_slider > img {
-    animation: slideWords 7s cubic-bezier(0.25, 1, 0.3, 1) infinite;
-    height:100%; padding:10px 0;
+    animation: slideWords 4s cubic-bezier(0.25, 1, 0.3, 1) 1; /* infinite 제거, 1번만 실행 */
+    animation-fill-mode: forwards; /* 마지막 상태 유지 */
+    height:100%; 
+    padding:10px 0;
 }
 main .question .question_list .loading > h1 .word_slider > img:last-child {
     padding-top:12px;
 }
-
 main .question .question_list .loading > p {
-    font-size:1.5rem; font-weight:600;
+    font-size:1.5rem; 
+    font-weight:600;
     margin-top:30px;
 }
-main .question .question_list .question_item.current {
-    display: block;
-    opacity: 1;
-}
 main .question .question_nav {
-    display:flex; justify-content:space-between;
-    align-items:center; width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center; 
+    width:100%;
     margin-bottom:128px;
 }
 main .question .question_nav button {
-    background:none; outline:none;
-    border:0; transition:all 0.3s ease;
+    background:none; 
+    outline:none;
+    border:0; 
+    transition:all 0.3s ease;
 }
 main .question .question_nav button:hover {
     opacity:0.5;
@@ -256,60 +301,75 @@ main .question .question_nav button > img {
 main .question .question_nav .next_btn {
     rotate:180deg;
 }
-main .question .title_wrap {}
 main .question .title_wrap > * {
     text-align:center;
 }
 main .question .title_wrap .q_num {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:3rem; letter-spacing:-0.005em;
+    font-size:3rem; 
+    letter-spacing:-0.005em;
     line-height:1.0;
     transition: opacity 0.5s ease;
     opacity:1;
 }
 main .question .title_wrap .ask {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:4rem; letter-spacing:-0.5px;
-    line-height:1.0; margin:25px 0 30px;
+    font-size:4rem; 
+    letter-spacing:-0.5px;
+    line-height:1.0; 
+    margin:25px 0 30px;
 }
 main .question .title_wrap .ask_ko {
-    font-size:2rem; line-height:1.2;
+    font-size:2rem; 
+    line-height:1.2;
     font-weight:600;
 }
-/* answer option 디자인 */
 main .question .answer_area {
-    display:flex; justify-content:center;
+    display:flex; 
+    justify-content:center;
     align-items:center;
     gap:100px;
     transition: opacity 0.5s ease;
 }
 main .question .answer_area .option .option_txt {
-    text-align:center; padding:65px 90px;
+    text-align:center; 
+    padding:65px 90px;
     box-shadow:inset 0 0 15px rgba(0, 0, 0, 0.05);
-    border:2px solid #E5E5E7; border-radius:15px;
+    border:2px solid #E5E5E7; 
+    border-radius:15px;
     margin-bottom:15px;
 }
 main .question .answer_area .option p {
-    font-size:2rem; color:#8B8B8F; font-weight:500;
+    font-size:2rem; 
+    color:#8B8B8F; 
+    font-weight:500;
 }
 main .question .answer_area .option p:nth-child(2) {
-    font-weight:600; color:#4D515E;
+    font-weight:600; 
+    color:#4D515E;
     margin:40px 0 20px;
 }
 main .question .answer_area .option p:last-child {
-    font-size:1.75rem; color:#4D515E;
+    font-size:1.75rem; 
+    color:#4D515E;
 }
 main .question .answer_area .option .user_btns {
-    display:flex; justify-content:space-between;
+    display:flex; 
+    justify-content:space-between;
     gap:20px;
     transition: opacity 0.5s ease;
     opacity:0;
 }
 main .question .answer_area .option .user_btns .user_btn {
-    padding:30px 105px; display:flex; flex-direction:column;
-    justify-content:space-between; align-items:center;
-    width:405px; height:125px;
-    border:2px solid #d9d9d9; border-radius:15px;
+    padding:30px 0; 
+    display:flex; 
+    flex-direction:column;
+    justify-content:space-between; 
+    align-items:center;
+    width:405px; 
+    height:125px;
+    border:2px solid #d9d9d9; 
+    border-radius:15px;
     box-shadow:inset 0 0 15px rgba(0, 0, 0, 0.05);
     box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
     background-color:rgb(248, 248, 252);
@@ -318,68 +378,291 @@ main .question .answer_area .option .user_btns .user_btn {
 main .question .answer_area .option .user_btns .user_btn:hover {
     filter:brightness(0.95);
 }
-main .question .answer_area .option .user_btns .user_btn.selected {border:2px solid #E72427}
+main .question .answer_area .option .user_btns .user_btn.selected {
+    border:3px solid #E72427;
+}
 main .question .answer_area .option .user_btns .user_btn:last-child {
     background-color:rgb(236, 237, 242);
 }
 main .question .answer_area .option .user_btns .user_btn span {
-    color:#4D515E; text-transform:uppercase;
+    color:#4D515E; 
+    text-transform:uppercase;
 }
 main .question .answer_area .option .user_btns .user_btn span:last-child {
     font-family: 'PPMonumentWide', sans-serif;
     letter-spacing:-0.005em;
-    font-size:1.75rem; color:#6f6f6f;
+    font-size:1.75rem; 
+    color:#6f6f6f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
-/* progress 디자인 */
+/* progress bar */
 main .question .progress_wrap {
-    padding:0 80px; width:100%; position:fixed;
-    left:0; bottom:80px;
+    padding:0 80px; 
+    width:100%; 
+    position:fixed;
+    left:0; 
+    bottom:80px;
 }
 main .question .progress_wrap .progress_txt {
-    width:100%; display:flex; justify-content:space-between;
+    width:100%; 
+    display:flex; 
+    justify-content:space-between;
     margin-bottom:18px;
 }
 main .question .progress_wrap .progress_txt p {
-    font-size: 1.125rem; color:#A9A8B1;
-    line-height:1.5; letter-spacing:-0.005em;
+    font-size: 1.125rem; 
+    color:#A9A8B1;
+    line-height:1.5; 
+    letter-spacing:-0.005em;
     text-align:left;
 }
 main .question .progress_wrap .progress_txt p:last-child {
     text-align:right;
 }
 main .question .progress_wrap .progress_bar {
-    width:100%; height:6px; border-radius:3px;
+    width:100%; 
+    height:6px; 
+    border-radius:3px;
     background-color:rgb(228, 231, 237);
     position:relative;
 }
 main .question .progress_wrap .progress_bar .progress_fill {
-    background-color:#999DA6; width:0; height:100%;
-    position:absolute; left:0; border-radius:3px;
+    background-color:#999DA6; 
+    width:0; 
+    height:100%;
+    position:absolute; 
+    left:0; 
+    border-radius:3px;
     transition:width 0.5s ease;
 }
 
-/* ------------------- 4. result ------------------- */
+/* ============================== 4. result ============================== */
 main .result {
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    padding:0 120px;
+    display:flex; 
+    flex-direction:column;
+    align-items:center; 
+    justify-content:flex-start;
+    padding:0 120px; margin-top:150px;
 }
 main .result > h1 {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:8.125rem; letter-spacing:-0.5px;
-    margin-bottom:105px;
+    font-size:8.125rem; 
+    letter-spacing:-0.5px;
+    margin-bottom:100px;
 }
 main .result > h1 strong {
     font-family: 'PPMonumentWide', sans-serif;
-    font-size:8.125rem; letter-spacing:-0.5px;
-    font-weight:900; color:#E72427;
+    font-size:8.125rem; 
+    letter-spacing:-0.5px;
+    font-weight:900; 
+    color:#E72427;
 }
 main .result .result_wrap {
-    display:flex; justify-content:space-between;
+    display:flex; 
+    justify-content:space-between;
     width:100%;
 }
-main .result .result_wrap > * {
-    width:calc((100% - 40px) / 2); height:520px;
-    background-color:lightblue;
+main .result .result_wrap .result_item {
+    width:calc((100% - 40px) / 2); 
+    height:520px;
+    background: linear-gradient(to bottom, #F4F5F9, #B4B4B7); 
+    padding:60px;
+    position:relative;
+    display:flex; 
+    flex-direction:column;
+    align-items:flex-start; 
+    justify-content:space-between;
+}
+main .result .result_wrap .result_item .name {
+    display:flex; 
+    flex-direction:column;
+    align-items:flex-start;
+}
+main .result .result_wrap .result_item .name span:first-child {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.5rem; 
+    letter-spacing:-0.5px; 
+    margin-bottom:15px;
+}
+main .result .result_wrap .result_item .name span:last-child {
+    font-family: 'LUV_GIFTIS', sans-serif;
+    font-size:6rem;
+}
+main .result .result_wrap .result_item .result_love {
+    display:flex; 
+    flex-direction:column;
+    align-items:flex-start;
+}
+main .result .result_wrap .result_item .result_love span {
+    font-size:1.25rem; 
+    font-weight:500; 
+    line-height:1.4;
+}
+main .result .result_wrap .result_item .result_love span:last-child {
+    font-weight:300; 
+    margin-top:10px;
+}
+main .result .result_wrap .result_item .result_love_icn {
+    position:absolute; 
+    width:365px; 
+    right:0; 
+    bottom:0;
+}
+main .result .result_wrap .result_item .result_love_icn > img {
+    width:100%;
+}
+main .result .btn {
+    opacity:0; 
+    transition:all 0.8s ease;
+    margin-top:80px;
+}
+
+/* ============================== 5. message ============================== */
+.message {
+    flex-direction:column;
+    align-items:center;
+    padding:60px 200px 70px;
+}
+.message .txt_wrap {
+    text-align:center; 
+    margin-top:100px; 
+    margin-bottom:50px;
+}
+.message .txt_wrap > h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:4rem; 
+    letter-spacing:-0.005em;
+}
+.message .txt_wrap > h2 {
+    font-size:2rem; 
+    font-weight:400;
+    margin-top:20px;
+}
+.message #message_form {width:100%;}
+.message #message_form fieldset .message_input {
+    margin-bottom:35px;
+}
+.message #message_form fieldset .message_input:last-child {
+    margin-bottom:65px;
+}
+.message #message_form fieldset .message_input dt {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.5rem; 
+    letter-spacing:-0.005em;
+    color:#6f6f6f; 
+    margin-bottom:15px;
+}
+.message #message_form fieldset .message_input .input_wrap {
+    width:100%; 
+    height:170px; 
+    display:flex; 
+    justify-content:space-between;
+    align-items:center; 
+    border:2px solid #d9d9d9;
+    background:rgba(237, 238, 245, 0.3); 
+    border-radius:15px;
+    padding:20px 50px;
+}
+.message #message_form fieldset .message_input:last-child .input_wrap {
+    background:rgba(198, 201, 211, 0.3);
+}
+.message #message_form fieldset .message_input .input_wrap input {
+    font-family: 'PPMonumentWide', sans-serif;
+    width:100%; 
+    line-height:1.2;
+    background:none; 
+    border:none; 
+    outline: none;
+    font-size:2rem; 
+    letter-spacing:-0.005em;
+}
+.message #message_form fieldset .input_wrap input::placeholder {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2rem; 
+    letter-spacing:-0.005em;
+    color: #CCD0DC; 
+    line-height:200px;
+}
+.message .btn .go_btn {
+    width:auto;
+    white-space: nowrap;
+}
+
+/* ============================== 6. love_tank ============================== */
+main .love_tank {
+    position:relative;
+}
+main .love_tank .tank_motion video {
+    position:absolute;
+    width:100%; height:100%;
+}
+main .love_tank .user_result_wrap {
+    position:absolute; z-index:5;
+    left:50%; top:54.5%;
+    transform:translate(-50%, -50%);
+    width:607px; height:603px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    padding:60px 45px;
+    display:flex; flex-direction:column;
+    justify-content:space-between;
+    opacity: 0; /* 초기값 추가 */
+    transition: opacity 0.5s ease-in-out; /* 트랜지션 추가 */
+}
+main .love_tank .user_result_wrap .user_wrap {
+    text-align:right;
+}
+main .love_tank .user_result_wrap .user_wrap .user_area {
+    margin-bottom:30px;
+}
+main .love_tank .user_result_wrap .user_wrap .user_area:last-child {
+margin-bottom:0;
+}
+main .love_tank .user_result_wrap * {
+    color:#fff;
+}
+main .love_tank .user_result_wrap .user_wrap .wrap {
+    display:flex; justify-content:space-between;
+    align-items:flex-start;
+}
+main .love_tank .user_result_wrap .user_wrap .wrap .user_font {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-weight:900;
+}
+main .love_tank .user_result_wrap .user_wrap .wrap span:last-child {
+    font-family: 'LUV_GIFTIS', sans-serif;
+    font-size:4rem; text-transform:uppercase;
+}
+main .love_tank .user_result_wrap .user_area .message_txt {
+    text-align:right;
+    font-size:1.25rem;
+    margin-top:12px;
+}
+main .love_tank .user_result_wrap .user_area .message_txt span {
+    text-transform:uppercase;
+}
+
+main .love_tank .user_result_wrap .qr_tank {
+    bottom:0;
+    display:flex; justify-content:space-between;
+    align-items:flex-end;
+}
+main .love_tank .user_result_wrap .qr_tank .qr {
+    width:100px; height: 100px;
+}
+main .love_tank .user_result_wrap .tank_desc {
+    width:200px; text-align:right;
+}
+main .love_tank .user_result_wrap .tank_desc p {
+    font-weight:500;
+}
+main .love_tank .user_result_wrap .tank_desc p {
+    text-transform:uppercase;
+}
+main .love_tank .user_result_wrap .tank_desc p:last-child {
+    font-size:0.875rem; margin-top:10px;
+    line-height:1.2; font-weight:200;
 }

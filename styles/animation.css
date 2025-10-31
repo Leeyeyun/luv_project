@@ -1,10 +1,8 @@
-
-/* ✅ 기존 한 칸씩 멈추는 구조 유지 + 자연스러운 루프 */
 @keyframes slideWords {
-    0%, 10%   { transform: translateY(0); }
-    20%, 30%  { transform: translateY(calc(-80px)); }   /* 80 + 20 */
-    40%, 50%  { transform: translateY(calc(-160px)); }
-    60%, 70%  { transform: translateY(calc(-240px)); }
-    80%, 90%  { transform: translateY(calc(-320px)); }
-    100%      { transform: translateY(calc(-400px)); }   /* 복제 세트로 자연스럽게 이어짐 */
+    0%, 12%   { transform: translateY(0); }
+    22%, 34%  { transform: translateY(calc(-80px)); }
+    44%, 56%  { transform: translateY(calc(-160px)); }
+    66%, 78%  { transform: translateY(calc(-240px)); }
+    88%, 95%  { transform: translateY(calc(-320px)); }
+    100%      { transform: translateY(calc(-400px)); }
 }
