@@ -65,3 +65,119 @@ window.addEventListener('scroll', () => {
         upImg.style.bottom = '-100%'
     }
 })
+
+
+// 슬라이더 진행 바 색상 업데이트
+function updateSliderProgress(slider) {
+    const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+    slider.style.setProperty('--value', percentage + '%');
+}
+
+const typingArea = document.querySelector('.typing_area');
+
+// 1. 폰트 크기 조절
+const fontSizeSlider = document.getElementById('fontSize');
+updateSliderProgress(fontSizeSlider);
+fontSizeSlider.addEventListener('input', function() {
+    updateSliderProgress(this);
+    document.getElementById('fontSizeValue').textContent = this.value + 'px';
+    typingArea.style.fontSize = this.value + 'px';
+});
+
+// 2. 자간 조절
+const letterSpacingSlider = document.getElementById('letterSpacing');
+updateSliderProgress(letterSpacingSlider);
+letterSpacingSlider.addEventListener('input', function() {
+    updateSliderProgress(this);
+    document.getElementById('letterSpacingValue').textContent = this.value;
+    typingArea.style.letterSpacing = this.value + 'px';
+});
+
+// 3. 정렬 토글
+const alignButtons = document.querySelectorAll('.align button');
+alignButtons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+        alignButtons.forEach(btn => btn.setAttribute('data-active', 'false'));
+        this.setAttribute('data-active', 'true');
+        
+        if (index === 0) {
+            typingArea.style.textAlign = 'left';
+        } else if (index === 1) {
+            typingArea.style.textAlign = 'center';
+        }
+    });
+});
+
+// 4. 대소문자 토글
+const caseButtons = document.querySelectorAll('.case button');
+caseButtons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+        caseButtons.forEach(btn => btn.setAttribute('data-active', 'false'));
+        this.setAttribute('data-active', 'true');
+        
+        if (index === 0) {
+            typingArea.style.textTransform = 'uppercase'; // AA
+        } else if (index === 1) {
+            typingArea.style.textTransform = 'none'; // Aa
+        }
+    });
+});
+
+// 5. 다크모드 토글
+const darkmodeButton = document.querySelector('.darkmode button');
+const typingSection = document.querySelector('.typing');
+const sliderLabels = document.querySelectorAll('.slider_wrap label img');
+const fontSizeValue = document.getElementById('fontSizeValue');
+const letterSpacingValue = document.getElementById('letterSpacingValue');
+
+darkmodeButton.addEventListener('click', function() {
+    const currentMode = this.getAttribute('data-active');
+    
+    if (currentMode === 'dark') {
+        // 라이트 모드로 전환
+        this.setAttribute('data-active', 'light');
+        typingSection.style.backgroundColor = '#ffffff';
+        typingArea.style.color = '#000000';
+        
+        // 슬라이더 라벨 아이콘 invert
+        sliderLabels.forEach(img => img.style.filter = 'invert(1)');
+        
+        // 값 표시 색상 변경
+        fontSizeValue.style.color = '#000000';
+        letterSpacingValue.style.color = '#000000';
+        
+        // align 버튼 invert
+        alignButtons.forEach(btn => btn.style.filter = 'invert(1)');
+        
+        // case 버튼 색상 변경
+        caseButtons.forEach(btn => btn.style.color = '#000000');
+        
+        // 다크모드 버튼 자체도 invert
+        this.style.filter = 'invert(1)';
+        
+    } else {
+        // 다크 모드로 전환
+        this.setAttribute('data-active', 'dark');
+        typingSection.style.backgroundColor = '#000000';
+        typingArea.style.color = '#ffffff';
+        
+        // 원래대로 복원
+        sliderLabels.forEach(img => img.style.filter = 'none');
+        fontSizeValue.style.color = '#ffffff';
+        letterSpacingValue.style.color = '#ffffff';
+        alignButtons.forEach(btn => btn.style.filter = 'none');
+        caseButtons.forEach(btn => btn.style.color = '#ffffff');
+        this.style.filter = 'none';
+    }
+});
+
+
+// Glyphs - hover 시 왼쪽 preview 변경
+const glyphDisplay = document.querySelector('.glyph_display');
+const glyphItems = document.querySelectorAll('.glyph_item');
+
+glyphItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        glyphDisplay.textContent = this.textContent;
+    });
+});
