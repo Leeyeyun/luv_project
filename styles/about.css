@@ -1,8 +1,16 @@
-main div video {
-    width:100%;
-    
+main > div {
+    width:100%; height:100vh; text-align:center;
 }
 
-/* main img {
-    width:100%;
-} */
+main .intro {
+    background:url(../images/about_bg.jpg);
+    background-position:center; background-size: cover;
+    background-repeat:no-repeat;
+    position:relative;
+}
+main .intro h1 {
+    font-family: 'PPMonumentWide', sans-serif;
+    color:#fff; font-weight:900; line-height:1.5;
+    font-size:14.25rem; width:100%;
+    position: absolute; bottom:0; left:50%; transform:translateX(-50%);
+}
