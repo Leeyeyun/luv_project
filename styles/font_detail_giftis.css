@@ -1,0 +1,28 @@
+main .intro .intro_wrap .font_name > p {
+    margin-left:20px;
+}
+main .slogan > p {
+    font-size:8.4rem;
+}
+
+
+/* 각 메트릭 라인 위치 */
+main .glyphs .glyphs_panel .left_preview .glyph_display {
+    margin-top:-85px;
+}
+
+main .glyphs .glyphs_panel .left_preview .metric_line.ascender {
+    top:-16px;
+}
+main .glyphs .glyphs_panel .left_preview .metric_line.cap_height {
+    top: 36px;
+}
+main .glyphs .glyphs_panel .left_preview .metric_line.x_height {
+    top: 179px;
+}
+main .glyphs .glyphs_panel .left_preview .metric_line.baseline {
+    top: 539px;
+}
+main .glyphs .glyphs_panel .left_preview .metric_line.descender {
+    top: 696px;
+}

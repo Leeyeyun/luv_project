@@ -46,7 +46,7 @@ header.scrolled .header_wrap {
 }
 
 /* test nav 숨기기 */
-header.scrolled .gnb li:nth-child(3) {
+header.scrolled .gnb > li:nth-child(3) {
     display:none;
 }
 

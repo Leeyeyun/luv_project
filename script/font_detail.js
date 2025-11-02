@@ -1,7 +1,9 @@
-// scroll trigger 폰트 -> 3d 폰트로 바뀌는 인터랙션
+// ===== Font Detail Page Common Script =====
 
+// GSAP ScrollTrigger 등록
 gsap.registerPlugin(ScrollTrigger)
 
+// scroll trigger 폰트 -> 3d 폰트로 바뀌는 인터랙션
 const info = document.querySelector('.information')
 const img1 = document.querySelector('.information .font_icon img:nth-child(1)')
 const img2 = document.querySelector('.information .font_icon img:nth-child(2)')
@@ -47,8 +49,6 @@ gsap.to(img2, {
     }
 })
 
-
-
 // 스크롤 y가 높이 지나가면 아이콘 등장
 window.addEventListener('scroll', () => {
     const slogan = document.querySelector('.slogan')
@@ -65,7 +65,6 @@ window.addEventListener('scroll', () => {
         upImg.style.bottom = '-100%'
     }
 })
-
 
 // 슬라이더 진행 바 색상 업데이트
 function updateSliderProgress(slider) {
@@ -170,7 +169,6 @@ darkmodeButton.addEventListener('click', function() {
         this.style.filter = 'none';
     }
 });
-
 
 // Glyphs - hover 시 왼쪽 preview 변경
 const glyphDisplay = document.querySelector('.glyph_display');
