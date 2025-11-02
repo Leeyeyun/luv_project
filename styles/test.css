@@ -490,7 +490,7 @@ main .result .result_wrap .result_item .name span:first-child {
 }
 main .result .result_wrap .result_item .name span:last-child {
     font-family: 'LUV_GIFTIS', sans-serif;
-    font-size:6rem;
+    font-size:5.5rem; text-transform:uppercase;
 }
 main .result .result_wrap .result_item .result_love {
     display:flex; 
@@ -605,7 +605,7 @@ main .love_tank .user_result_wrap {
     left:50%; top:54.5%;
     transform:translate(-50%, -50%);
     width:607px; height:603px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
     padding:60px 45px;
     display:flex; flex-direction:column;
     justify-content:space-between;
@@ -630,7 +630,9 @@ main .love_tank .user_result_wrap .user_wrap .wrap {
 }
 main .love_tank .user_result_wrap .user_wrap .wrap .user_font {
     font-family: 'PPMonumentWide', sans-serif;
-    font-weight:900;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 10px;
 }
 main .love_tank .user_result_wrap .user_wrap .wrap span:last-child {
     font-family: 'LUV_GIFTIS', sans-serif;

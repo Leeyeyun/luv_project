@@ -405,6 +405,22 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
 
+            // ✅ 메시지 입력값 가져오기
+            const message1Input = document.getElementById('message1');
+            const message2Input = document.getElementById('message2');
+            const user1Message = message1Input?.value.trim();
+            const user2Message = message2Input?.value.trim();
+
+            // ✅ 메시지가 입력되지 않은 경우 경고
+            if (!user1Message || !user2Message) {
+                alert('두 사용자의 메시지를 모두 입력해주세요.');
+                return;
+            }
+
+            // ✅ localStorage에 메시지 저장
+            localStorage.setItem('user1Message', user1Message);
+            localStorage.setItem('user2Message', user2Message);
+
             const current = messageGoBtn.closest('section');
             const next = current?.nextElementSibling;
             if (!next) return;
@@ -626,6 +642,18 @@ function calculateAndApplyLoveLanguage() {
     console.log('User1 Language:', user1Language); // 디버깅용
     console.log('User2 Language:', user2Language); // 디버깅용
     
+    // ✅ localStorage에 폰트 정보 저장 (love_tank에서 사용)
+    localStorage.setItem('user1Font', loveLanguageInfo[user1Language].font);
+    localStorage.setItem('user2Font', loveLanguageInfo[user2Language].font);
+    
+    // ✅ localStorage에 아이콘 정보 저장 (비디오 선택에 사용)
+    localStorage.setItem('user1Icon', loveLanguageInfo[user1Language].icon);
+    localStorage.setItem('user2Icon', loveLanguageInfo[user2Language].icon);
+    
+    // ✅ localStorage에 사랑의 언어 저장 (URL 파라미터용)
+    localStorage.setItem('user1Language', user1Language);
+    localStorage.setItem('user2Language', user2Language);
+    
     // user1 결과 업데이트
     const user1Result = document.querySelector('.user1_result');
     if (user1Result) {
@@ -692,47 +720,246 @@ document.addEventListener('DOMContentLoaded', function() {
     const userResultWrap = document.querySelector('.user_result_wrap');
     const writedMessages = document.querySelectorAll('.writedMessage');
     
+    // ✅ URL 파라미터 확인 및 결과 복원
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('u1') && urlParams.has('u2')) {
+        console.log('Loading results from URL parameters...');
+        
+        // URL에서 데이터 가져오기
+        const user1Name = urlParams.get('u1');
+        const user2Name = urlParams.get('u2');
+        const user1Lang = urlParams.get('r1');
+        const user2Lang = urlParams.get('r2');
+        const user1Msg = urlParams.get('m1');
+        const user2Msg = urlParams.get('m2');
+        
+        // localStorage에 저장
+        localStorage.setItem('user1Name', user1Name);
+        localStorage.setItem('user2Name', user2Name);
+        localStorage.setItem('user1Language', user1Lang);
+        localStorage.setItem('user2Language', user2Lang);
+        localStorage.setItem('user1Font', loveLanguageInfo[user1Lang].font);
+        localStorage.setItem('user2Font', loveLanguageInfo[user2Lang].font);
+        localStorage.setItem('user1Icon', loveLanguageInfo[user1Lang].icon);
+        localStorage.setItem('user2Icon', loveLanguageInfo[user2Lang].icon);
+        localStorage.setItem('user1Message', user1Msg);
+        localStorage.setItem('user2Message', user2Msg);
+        
+        // love_tank 섹션으로 바로 이동
+        document.querySelectorAll('main > section').forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+        loveTankSection.classList.add('active');
+        loveTankSection.style.display = 'flex';
+        loveTankSection.style.opacity = '1';
+        
+        // 이름 적용
+        document.querySelectorAll('.user1Name').forEach(span => {
+            span.textContent = user1Name;
+            span.style.fontFamily = `'LUV_${loveLanguageInfo[user1Lang].font}', sans-serif`;
+        });
+        document.querySelectorAll('.user2Name').forEach(span => {
+            span.textContent = user2Name;
+            span.style.fontFamily = `'LUV_${loveLanguageInfo[user2Lang].font}', sans-serif`;
+        });
+    }
+    
     // user_result_wrap 초기 상태 설정
     if (userResultWrap) {
         userResultWrap.style.opacity = '0';
         userResultWrap.style.transition = 'opacity 1s ease-in-out';
     }
     
+    // ✅ 비디오 소스를 먼저 설정 (섹션 진입 전에)
+    console.log('=== 비디오 선택 시작 ===');
+    console.log('tankVideo element:', tankVideo);
+    
+    const user1Icon = localStorage.getItem('user1Icon');
+    const user2Icon = localStorage.getItem('user2Icon');
+    
+    console.log('User1 Icon Path:', user1Icon);
+    console.log('User2 Icon Path:', user2Icon);
+    
+    if (tankVideo && user1Icon && user2Icon) {
+        // 아이콘 경로에서 아이콘 이름 추출 (heart, arrow, wing, hand, ribbon)
+        const getIconName = (iconPath) => {
+            console.log('Parsing icon path:', iconPath);
+            // 3d01_heart.png, 3d02_arrow.png 등에서 이름 추출
+            const match = iconPath.match(/3d\d+_(\w+)\./);
+            console.log('Match result:', match);
+            return match ? match[1] : 'heart'; // 기본값 heart
+        };
+        
+        const icon1Name = getIconName(user1Icon); // heart, arrow, wing, hand, ribbon
+        const icon2Name = getIconName(user2Icon);
+        
+        console.log('Extracted icon names - User1:', icon1Name, 'User2:', icon2Name);
+        
+        // ✅ 알파벳 순서로 정렬 (비디오 파일명과 매칭하기 위해)
+        const sortedIcons = [icon1Name, icon2Name].sort();
+        const videoName = `${sortedIcons[0]}_${sortedIcons[1]}.mp4`;
+        
+        console.log('Sorted for video filename:', videoName);
+        
+        const videoPath = `./video/${videoName}`;
+        
+        console.log('Final video path:', videoPath);
+        console.log('Checking if video exists...');
+        
+        // ✅ 비디오 존재 여부 확인 후 설정
+        fetch(videoPath, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Video found! Loading...');
+                    tankVideo.pause();
+                    tankVideo.removeAttribute('src');
+                    tankVideo.load();
+                    tankVideo.src = videoPath;
+                    tankVideo.load();
+                } else {
+                    console.warn('Video not found:', videoPath);
+                    console.warn('Using default video or hiding video element');
+                    // 비디오 요소 숨기기 (선택사항)
+                    // tankVideo.style.display = 'none';
+                }
+            })
+            .catch(err => {
+                console.error('Error checking video:', err);
+            });
+    } else {
+        console.log('Missing data!');
+        console.log('- tankVideo:', tankVideo);
+        console.log('- user1Icon:', user1Icon);
+        console.log('- user2Icon:', user2Icon);
+    }
+    console.log('======================');
+    
     // Intersection Observer로 섹션 진입 감지
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                console.log('Love tank section is now visible');
                 // 비디오 재생
                 if (tankVideo) {
-                    tankVideo.play();
+                    tankVideo.play().catch(err => {
+                        console.error('Video play error:', err);
+                    });
                     
-                    // 5초 후 user_result_wrap 페이드인
+                    // 5초 후 user_result_wrap 페이드인 및 폰트 적용
                     setTimeout(() => {
                         if (userResultWrap) {
                             userResultWrap.style.opacity = '1';
+                            
+                            // ✅ localStorage에서 폰트 정보 가져오기
+                            const user1Font = localStorage.getItem('user1Font');
+                            const user2Font = localStorage.getItem('user2Font');
+                            
+                            console.log('Applying fonts - User1:', user1Font, 'User2:', user2Font);
+                            
+                            // ✅ love_tank 섹션의 user_area 폰트 적용
+                            const userAreas = userResultWrap.querySelectorAll('.user_area');
+                            
+                            if (userAreas[0]) {
+                                // USER 1 폰트 적용
+                                const user1NameSpan = userAreas[0].querySelector('.user1Name');
+                                const user1FontSpan = userAreas[0].querySelector('.user_font');
+                                
+                                if (user1NameSpan && user1Font) {
+                                    user1NameSpan.style.fontFamily = `'LUV_${user1Font}', sans-serif`;
+                                }
+                                if (user1FontSpan && user1Font) {
+                                    user1FontSpan.textContent = user1Font;
+                                }
+                                
+                                // message_txt의 span들도 user1 폰트 적용
+                                const user1MessageSpans = userAreas[0].querySelectorAll('.message_txt span');
+                                user1MessageSpans.forEach(span => {
+                                    span.style.fontFamily = `'LUV_${user1Font}', sans-serif`;
+                                });
+                            }
+                            
+                            if (userAreas[1]) {
+                                // USER 2 폰트 적용
+                                const user2NameSpan = userAreas[1].querySelector('.user2Name');
+                                const user2FontSpan = userAreas[1].querySelector('.user_font');
+                                
+                                if (user2NameSpan && user2Font) {
+                                    user2NameSpan.style.fontFamily = `'LUV_${user2Font}', sans-serif`;
+                                }
+                                if (user2FontSpan && user2Font) {
+                                    user2FontSpan.textContent = user2Font;
+                                }
+                                
+                                // message_txt의 span들도 user2 폰트 적용
+                                const user2MessageSpans = userAreas[1].querySelectorAll('.message_txt span');
+                                user2MessageSpans.forEach(span => {
+                                    span.style.fontFamily = `'LUV_${user2Font}', sans-serif`;
+                                });
+                            }
+                            
+                            // ✅ QR 코드 생성
+                            generateQRCode();
                         }
                     }, 5000);
                 }
             }
         });
     }, {
-        threshold: 0.5 // 섹션이 50% 보일 때 트리거
+        threshold: 0.5
     });
     
     if (loveTankSection) {
         observer.observe(loveTankSection);
     }
     
-    // 메시지 입력값을 writedMessage에 표시
-    // 이전 섹션에서 작성한 메시지를 localStorage에서 가져오거나
-    // 또는 직접 전달받은 값을 사용
+    // ✅ localStorage에서 메시지 가져오기
+    const user1Message = localStorage.getItem('user1Message') || 'I love you';
+    const user2Message = localStorage.getItem('user2Message') || 'You mean the world to me';
     
-    // 예시: localStorage에서 메시지 가져오기
-    const user1Message = localStorage.getItem('user1Message') || '당신과 함께하는 모든 순간이 소중해요';
-    const user2Message = localStorage.getItem('use:Message') || '당신의 사랑이 나를 완성시켜요';
-    
+    // ✅ writedMessage에 메시지 표시
     if (writedMessages.length >= 2) {
         writedMessages[0].textContent = user1Message;
         writedMessages[1].textContent = user2Message;
     }
 });
+
+// ✅ QR 코드 생성 함수
+function generateQRCode() {
+    const qrContainer = document.querySelector('.qr_tank .qr');
+    if (!qrContainer) return;
+    
+    // 결과 데이터 가져오기
+    const user1Name = document.querySelector('.user1Name')?.textContent || 'User1';
+    const user2Name = document.querySelector('.user2Name')?.textContent || 'User2';
+    const user1Language = localStorage.getItem('user1Language') || 'words';
+    const user2Language = localStorage.getItem('user2Language') || 'words';
+    const user1Message = localStorage.getItem('user1Message') || '';
+    const user2Message = localStorage.getItem('user2Message') || '';
+    
+    // URL 파라미터 생성
+    const baseUrl = window.location.origin + window.location.pathname;
+    const params = new URLSearchParams({
+        u1: user1Name,
+        u2: user2Name,
+        r1: user1Language,
+        r2: user2Language,
+        m1: user1Message,
+        m2: user2Message
+    });
+    
+    const resultUrl = `${baseUrl}?${params.toString()}`;
+    
+    console.log('QR Code URL:', resultUrl);
+    
+    // QR 코드 생성 (QRCode.js 라이브러리 사용)
+    qrContainer.innerHTML = ''; // 기존 QR 제거
+    new QRCode(qrContainer, {
+        text: resultUrl,
+        width: 100,
+        height: 100,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+    });
+}
