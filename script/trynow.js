@@ -34,12 +34,42 @@ document.addEventListener('DOMContentLoaded', function() {
                     textDisplay.style.opacity = '1';
                 }
             }, 800);
-        }, 800);
-    }, 1500);
+        }, 1200);
+    }, 2000);
+
+    // 초기화 함수
+    function resetToDefault() {
+        // 텍스트 초기화
+        fontPreview.textContent = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+        
+        // 스타일 초기화
+        fontPreview.style.fontSize = '110px';
+        fontPreview.style.letterSpacing = '0px';
+        fontPreview.style.lineHeight = '1.2';
+        fontPreview.style.textAlign = 'center';
+        fontPreview.style.textTransform = 'none';
+        
+        // 슬라이더 값 초기화
+        fontSize.value = 110;
+        letterSpacing.value = 0;
+        lineHeight.value = 1.2;
+        sizeValue.textContent = '110px';
+        spacingValue.textContent = '0px';
+        lineHeightValue.textContent = '1.2';
+        
+        // 버튼 active 상태 초기화
+        document.querySelectorAll('[data-align]').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-align="center"]').classList.add('active');
+        
+        document.querySelectorAll('[data-case]').forEach(b => b.classList.remove('active'));
+        document.querySelector('[data-case="none"]').classList.add('active');
+    }
 
     // 폰트 변경
     fontSelect.addEventListener('change', (e) => {
         const selectedFont = e.target.value;
+        
+        // 폰트 적용
         switch(selectedFont) {
             case 'ACTA':
                 fontPreview.style.fontFamily = "'LUV_ACTA', sans-serif";
@@ -57,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 fontPreview.style.fontFamily = "'LUV_GIFTIS', sans-serif";
                 break;
         }
+        
+        // 초기화
+        resetToDefault();
     });
 
     // 글씨 크기 조절
@@ -95,6 +128,23 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('[data-case]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             fontPreview.style.textTransform = btn.dataset.case;
+        });
+    });
+
+    // 추천 문구 버튼 클릭
+    document.querySelectorAll('.sample-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const text = btn.dataset.text;
+            fontPreview.textContent = text;
+            
+            // 커서를 텍스트 끝으로 이동
+            fontPreview.focus();
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.selectNodeContents(fontPreview);
+            range.collapse(false); // false = 끝으로
+            selection.removeAllRanges();
+            selection.addRange(range);
         });
     });
 
