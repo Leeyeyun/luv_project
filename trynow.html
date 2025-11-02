@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/luv_favicon.svg" type="image/x-icon">
+    <link rel="icon" href="./images/luv_favicon.svg" type="image/x-icon">
+    <title>LUV.</title>
+    <!-- 웹폰트 연결 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- CSS 연결 -->
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/font.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/trynow.css">
+    <!--플러그인 필수 css cdn 연결-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!--플러그인 필수 JS cdn 연결-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- JS 연결 -->
+    <script src="./script/common.js" defer></script>
+    <script src="./script/trynow.js" defer></script>
+</head>
+<body>
+    <!--===== header =====-->
+    <header>
+        <section class="header_wrap">
+            <!-- logo -->
+            <h1 class="logo"><a href="./index.html"><img src="./images/logo.svg" alt="luv."></a></h1>
+            <!-- main_nav -->
+            <nav>
+                <ul class="gnb">
+                    <li><a href="./about.html">ABOUT</a></li>
+                    <li><a href="./fonts.html">FONTS</a>
+                        <ul class="sub">
+                            <li><a href="./font_detail_acta.html">
+                                <img src="./images/3d/3d_type/acta.png" alt="#">
+                                <p>ACTA</p>
+                            </a></li>
+                            <li><a href="./font_detail_tempora.html">
+                                <img src="./images/3d/3d_type/tempora.png" alt="#">
+                                <p>TEMPORA</p>
+                            </a></li>
+                            <li><a href="./font_detail_servia.html">
+                                <img src="./images/3d/3d_type/servia.png" alt="#">
+                                <p>SERVIA</p>
+                            </a></li>
+                            <li><a href="./font_detail_lentus.html">
+                                <img src="./images/3d/3d_type/lentus.png" alt="#">
+                                <p>LENTUS</p>
+                            </a></li>
+                            <li><a href="./font_detail_giftis.html">
+                                <img src="./images/3d/3d_type/giftis.png" alt="#">
+                                <p>GIFTIS</p>
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./test.html">TEST</a></li>
+                </ul>
+            </nav>
+            <!-- trynow_btn -->
+            <div class="try">
+                <a href="./trynow.html">TRY NOW</a>
+            </div>
+        </section>
+    </header>
+
+<!--===== main =====-->
+    <main>
+        <!-- 로딩 화면 -->
+        <div class="loading" id="loading">
+            <div class="loading-text">Loading fonts...</div>
+        </div>
+
+        <!-- 사이드바 -->
+        <aside class="sidebar" id="sidebar">
+            <!-- 폰트 선택 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Typefaces</div>
+                <select class="font-select" id="fontSelect">
+                    <option value="ACTA">ACTA</option>
+                    <option value="TEMPORA">TEMPORA</option>
+                    <option value="SERVIA">SERVIA</option>
+                    <option value="LENTUS">LENTUS</option>
+                    <option value="GIFTIS">GIFTIS</option>
+                </select>
+            </div>
+
+            <!-- 설정 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Settings</div>
+                
+                <!-- 글씨 크기 -->
+                <div class="control-group">
+                    <div class="control-label">
+                        <span>Font Size</span>
+                        <span class="control-value" id="sizeValue">110px</span>
+                    </div>
+                    <input type="range" id="fontSize" min="12" max="200" value="80" step="1">
+                </div>
+
+                <!-- 자간 -->
+                <div class="control-group">
+                    <div class="control-label">
+                        <span>Letter Spacing</span>
+                        <span class="control-value" id="spacingValue">0px</span>
+                    </div>
+                    <input type="range" id="letterSpacing" min="-10" max="50" value="0" step="0.5">
+                </div>
+
+                <!-- 행간 -->
+                <div class="control-group">
+                    <div class="control-label">
+                        <span>Line Height</span>
+                        <span class="control-value" id="lineHeightValue">1.2</span>
+                    </div>
+                    <input type="range" id="lineHeight" min="0.8" max="3" value="1.2" step="0.05">
+                </div>
+            </div>
+
+            <!-- 정렬 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Alignment</div>
+                <div class="button-group">
+                    <button class="btn" data-align="left">Left</button>
+                    <button class="btn active" data-align="center">Center</button>
+                    <button class="btn" data-align="right">Right</button>
+                </div>
+            </div>
+
+            <!-- 대소문자 -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">Text Transform</div>
+                <div class="button-group">
+                    <button class="btn active" data-case="none">None</button>
+                    <button class="btn" data-case="uppercase">Uppercase</button>
+                    <button class="btn" data-case="lowercase">Lowercase</button>
+                    <button class="btn" data-case="capitalize">Capitalize</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="text-display">
+            <div id="fontPreview" contenteditable="true" spellcheck="false">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</div>
+        </div>
+    </main>
+</body>
+</html>
