@@ -497,21 +497,21 @@ const loveLanguageInfo = {
         name: '함께하는 시간',
         nameEn: 'Quality Time',
         desc: '온전히 집중하며 함께하는 시간을 통해<br>사랑을 느끼고 표현하는 타입',
-        icon: './images/3d/3d_img_2/3d03_clock.png',
+        icon: './images/3d/3d_img_2/3d02_arrow.png',
         font: 'TEMPORA'  // ✅ TEMPORA → LUV_TEMPORA
     },
     'service': {
         name: '봉사',
         nameEn: 'Acts of Service',
         desc: '상대를 위해 실질적으로 도움을 주는 행동으로<br>사랑을 느끼고 표현하는 타입',
-        icon: './images/3d/3d_img_2/3d04_hand.png',
+        icon: './images/3d/3d_img_2/3d03_wing.png',
         font: 'SERVIA'  // ✅ SERVIA → LUV_SERVIA
     },
     'touch': {
         name: '스킨십',
         nameEn: 'Physical Touch',
         desc: '따뜻한 접촉과 신체적 친밀감을 통해<br>사랑을 느끼고 표현하는 타입',
-        icon: './images/3d/3d_img_2/3d02_hands.png',
+        icon: './images/3d/3d_img_2/3d04_hand.png',
         font: 'LENTUS'  // ✅ LENTUS → LUV_LENTUS
     },
     'gifts': {
