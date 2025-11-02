@@ -796,37 +796,62 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Extracted icon names - User1:', icon1Name, 'User2:', icon2Name);
         
-        // ✅ 알파벳 순서로 정렬 (비디오 파일명과 매칭하기 위해)
-        const sortedIcons = [icon1Name, icon2Name].sort();
-        const videoName = `${sortedIcons[0]}_${sortedIcons[1]}.mp4`;
+        // ✅ 하드코딩 비디오 매핑 (확실하게!)
+        const videoMap = {
+            // 같은 조합
+            'heart-heart': 'heart_heart.mp4',
+            'arrow-arrow': 'arrow_arrow.mp4',
+            'wing-wing': 'wing_wing.mp4',
+            'hand-hand': 'hand_hand.mp4',
+            'ribbon-ribbon': 'ribbon_ribbon.mp4',
+            
+            // 다른 조합 (알파벳 순서)
+            'arrow-heart': 'arrow_heart.mp4',
+            'heart-arrow': 'arrow_heart.mp4',
+            
+            'heart-wing': 'heart_wing.mp4',
+            'wing-heart': 'heart_wing.mp4',
+            
+            'hand-heart': 'hand_heart.mp4',
+            'heart-hand': 'hand_heart.mp4',
+            
+            'heart-ribbon': 'heart_ribbon.mp4',
+            'ribbon-heart': 'heart_ribbon.mp4',
+            
+            'arrow-wing': 'arrow_wing.mp4',
+            'wing-arrow': 'arrow_wing.mp4',
+            
+            'arrow-hand': 'arrow_hand.mp4',
+            'hand-arrow': 'arrow_hand.mp4',
+            
+            'arrow-ribbon': 'arrow_ribbon.mp4',
+            'ribbon-arrow': 'arrow_ribbon.mp4',
+            
+            'hand-wing': 'hand_wing.mp4',
+            'wing-hand': 'hand_wing.mp4',
+            
+            'ribbon-wing': 'ribbon_wing.mp4',
+            'wing-ribbon': 'ribbon_wing.mp4',
+            
+            'hand-ribbon': 'hand_ribbon.mp4',
+            'ribbon-hand': 'hand_ribbon.mp4'
+        };
         
-        console.log('Sorted for video filename:', videoName);
+        const combinationKey = `${icon1Name}-${icon2Name}`;
+        const videoFileName = videoMap[combinationKey] || 'heart_heart.mp4'; // 기본값
+        const videoPath = `./video/${videoFileName}`;
         
-        const videoPath = `./video/${videoName}`;
-        
+        console.log('Combination key:', combinationKey);
+        console.log('Selected video file:', videoFileName);
         console.log('Final video path:', videoPath);
-        console.log('Checking if video exists...');
         
-        // ✅ 비디오 존재 여부 확인 후 설정
-        fetch(videoPath, { method: 'HEAD' })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Video found! Loading...');
-                    tankVideo.pause();
-                    tankVideo.removeAttribute('src');
-                    tankVideo.load();
-                    tankVideo.src = videoPath;
-                    tankVideo.load();
-                } else {
-                    console.warn('Video not found:', videoPath);
-                    console.warn('Using default video or hiding video element');
-                    // 비디오 요소 숨기기 (선택사항)
-                    // tankVideo.style.display = 'none';
-                }
-            })
-            .catch(err => {
-                console.error('Error checking video:', err);
-            });
+        // ✅ 비디오 설정
+        tankVideo.pause();
+        tankVideo.removeAttribute('src');
+        tankVideo.load();
+        tankVideo.src = videoPath;
+        tankVideo.load();
+        console.log('Video source updated!');
     } else {
         console.log('Missing data!');
         console.log('- tankVideo:', tankVideo);
@@ -897,9 +922,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     span.style.fontFamily = `'LUV_${user2Font}', sans-serif`;
                                 });
                             }
-                            
-                            // ✅ QR 코드 생성
-                            generateQRCode();
                         }
                     }, 5000);
                 }
@@ -923,43 +945,3 @@ document.addEventListener('DOMContentLoaded', function() {
         writedMessages[1].textContent = user2Message;
     }
 });
-
-// ✅ QR 코드 생성 함수
-function generateQRCode() {
-    const qrContainer = document.querySelector('.qr_tank .qr');
-    if (!qrContainer) return;
-    
-    // 결과 데이터 가져오기
-    const user1Name = document.querySelector('.user1Name')?.textContent || 'User1';
-    const user2Name = document.querySelector('.user2Name')?.textContent || 'User2';
-    const user1Language = localStorage.getItem('user1Language') || 'words';
-    const user2Language = localStorage.getItem('user2Language') || 'words';
-    const user1Message = localStorage.getItem('user1Message') || '';
-    const user2Message = localStorage.getItem('user2Message') || '';
-    
-    // URL 파라미터 생성
-    const baseUrl = window.location.origin + window.location.pathname;
-    const params = new URLSearchParams({
-        u1: user1Name,
-        u2: user2Name,
-        r1: user1Language,
-        r2: user2Language,
-        m1: user1Message,
-        m2: user2Message
-    });
-    
-    const resultUrl = `${baseUrl}?${params.toString()}`;
-    
-    console.log('QR Code URL:', resultUrl);
-    
-    // QR 코드 생성 (QRCode.js 라이브러리 사용)
-    qrContainer.innerHTML = ''; // 기존 QR 제거
-    new QRCode(qrContainer, {
-        text: resultUrl,
-        width: 100,
-        height: 100,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-    });
-}
