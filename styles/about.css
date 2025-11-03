@@ -1,5 +1,6 @@
 main > div {
     width:100%; height:100vh; text-align:center;
+    background-color:#FCFDFF;
 }
 
 /* 1. intro */
@@ -42,4 +43,173 @@ main .introduction .btm_txt > p:first-child {
 main .introduction .btm_txt > p:last-child {
     margin-bottom:0; font-size:1.25rem;
     letter-spacing:-0.5px; line-height:1.5; margin-bottom:0;
+}
+
+/* 3. background */
+main .background {
+    padding:140px 80px;
+    height:max-content;
+}
+main .background .title {
+    text-align:left;
+}
+main .title .sub_title {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2rem; text-transform:uppercase;
+    letter-spacing:-0.5px; margin-bottom:25px;
+}
+main .title .desc {
+    font-size:1.25rem; line-height:1.7; font-weight:400;
+}
+
+/* Swiper 컨테이너 */
+main .background .backgroundSwiper {
+    margin-top:100px;
+    width:100%; 
+    height:820px;
+}
+
+/* Swiper 슬라이드 */
+main .background .swiper-slide {
+    text-align:center; 
+    padding:64px 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+main .background .swiper-slide .txt_wrap {
+    display:flex; 
+    flex-direction:column; 
+    height:100%;
+    align-items:center; 
+    justify-content:space-between;
+}
+
+main .background .swiper-slide .txt_wrap h3 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.75rem; 
+    color:#fff; 
+    letter-spacing:-0.05em;
+}
+
+main .background .swiper-slide .txt_wrap .btm_txt > p {
+    font-size:1.2rem; 
+    font-weight:300; 
+    color:#fff;
+    text-align:center; 
+    letter-spacing:-0.5px; 
+    line-height:1.5;
+}
+main .background .swiper-slide .txt_wrap .btm_txt > p:first-child {
+    margin-bottom:15px; 
+    font-family: 'PPMonumentWide', sans-serif;
+    font-weight:400;
+}
+
+/* 4. keywords */
+main .keywords {
+    padding:140px 0 280px; height:max-content;
+}
+main .keywords .key_wrap {
+    display:flex; gap:90px; margin-top:120px;
+    align-items:center; justify-content:center;
+}
+main .keywords .key_wrap .word {
+    width:380px; height:380px; border-radius:50%;
+    background-color:#F6F8FB;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+}
+main .keywords .key_wrap .word > h3 {
+    font-size:1.5rem; font-weight:500;
+}
+main .keywords .key_wrap .word > p {
+    font-size:1.25rem; font-weight:300;
+    line-height:1.5; margin-top:30px;
+}
+
+/* 5. visible */
+main .visible {
+    padding:140px 80px;
+    background-color:#F6F8FB;
+}
+main .visible .title {
+    text-align:left;
+}
+main .visible .visible_wrap {
+    margin-top:160px; gap:70px;
+    display:flex; justify-content:center; align-items:center;
+}
+main .visible .visible_wrap .visible_contents {
+    display:flex; justify-content:center; align-items:center;
+    flex-direction:column;
+    text-align: center;
+}
+main .visible .visible_wrap .visible_contents > h3 {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2rem; color:#E72427; letter-spacing:-0.5px;
+    line-height:1.4; width:265px;
+}
+main .visible .visible_wrap .visible_contents > h4 {
+    color:#383838; font-size:1.125rem; margin-top:20px;
+    width:265px;
+}
+main .visible .visible_wrap .visible_contents > h4:nth-child(4) {
+    margin-top:0; margin-bottom:20px;
+}
+main .visible .visible_wrap .visible_contents .line {
+    width:1px; height:100px; background-color:#6F6F6F;
+    margin:30px 0;
+}
+
+/* 6. banner */
+main .banner {
+    height:max-content; padding:200px 0;
+}
+main .banner > p {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:6rem; line-height:1.3; letter-spacing:-0.5px;
+    text-transform:uppercase;
+}
+main .banner > p > span {
+    color:#E72427; text-align:left;
+    display: inline-block;
+    min-width: 400px; /* 텍스트 영역 확보 (필요시 조절) */
+}
+main .banner img {height:30px; margin-top:65px;}
+
+/* 5가지 폰트 클래스 */
+main .banner > p > span.font-acta {
+    font-family: 'LUV_ACTA', sans-serif;
+}
+main .banner > p > span.font-tempora {
+    font-family: 'LUV_TEMPORA', sans-serif;
+}
+main .banner > p > span.font-servia {
+    font-family: 'LUV_SERVIA', sans-serif;
+}
+main .banner > p > span.font-lentus {
+    font-family: 'LUV_LENTUS', sans-serif;
+}
+main .banner > p > span.font-giftis {
+    font-family: 'LUV_GIFTIS', sans-serif;
+}
+
+/* 커서 효과 (선택사항) */
+main .banner > p > span::after {
+    content: '';
+    display: inline-block;
+    width: 3px; /* 커서 두께 */
+    height:1em; /* 텍스트 높이에 맞춤 */
+    background-color: #E72427;
+    animation: blink 0.7s infinite;
+    margin-left: 5px; transform:translateY(-6px);
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
