@@ -189,9 +189,11 @@ main .banner > p > span.font-tempora {
 }
 main .banner > p > span.font-servia {
     font-family: 'LUV_SERVIA', sans-serif;
+    font-size:5.7rem;
 }
 main .banner > p > span.font-lentus {
     font-family: 'LUV_LENTUS', sans-serif;
+    font-size:6.25rem;
 }
 main .banner > p > span.font-giftis {
     font-family: 'LUV_GIFTIS', sans-serif;
