@@ -82,7 +82,7 @@ nav {
 }
 
 header .gnb > li:nth-child(2) {
-  margin: 0 100px; /* FONTS 버튼 양옆 마진 */
+    margin: 0 100px; /* FONTS 버튼 양옆 마진 */
 }
 
 header.scrolled .gnb > li:nth-child(2) {
@@ -100,18 +100,28 @@ header.scrolled .gnb > li:nth-child(2) {
 header.scrolled .gnb > li > a {color:#383838;}
 
 .gnb .sub {
-    display: none;
+    opacity: 0;
+    pointer-events: none; /* 클릭 불가 */
     position: absolute;
-    top: 100%;
-    left: 0;
+    gap:20px; 
+    justify-content:center;
+    top:60px;
+    left:50%;
+    transform:translateX(-50%);
     background: #fff;
     list-style: none;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px 20px;
+    box-shadow: 5px 8px 12px rgba(172, 173, 185, 0.25);
+    background:rgba(237, 238, 245, 0.4);
+    border:2px solid #D9D9D9;
+    border-radius:15px;
+    display: flex;
+    transition: opacity 0.3s ease;
 }
 
-.gnb > li:hover .sub {
-    display: block;
+.gnb .sub.active {
+    opacity: 1;
+    pointer-events: auto; /* 클릭 가능 */
 }
 
 .gnb .sub li {
@@ -130,6 +140,12 @@ header.scrolled .gnb > li > a {color:#383838;}
     height: 30px;
     margin-right: 10px;
 }
+.gnb .sub a > p {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:1.25rem; color:#d9d9d9;
+    transition:all 0.5s ease;
+}
+.gnb .sub a:hover > p {color:#E72427;}
 
 .try a {
     display: inline-block;

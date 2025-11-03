@@ -21,3 +21,32 @@ container.addEventListener('mousemove', (e) => {
     mouseX = e.clientX - rect.width / 2;
     mouseY = e.clientY - rect.height / 2;
 });
+
+//header sub 나오도록
+document.addEventListener('DOMContentLoaded', function() {
+    const fontsMenu = document.querySelector('.gnb > li:nth-child(2)');
+    const subMenu = fontsMenu.querySelector('.sub');
+    
+    let timeoutId;
+    
+    fontsMenu.addEventListener('mouseenter', function() {
+        clearTimeout(timeoutId);
+        subMenu.classList.add('active');
+    });
+    
+    fontsMenu.addEventListener('mouseleave', function() {
+        timeoutId = setTimeout(function() {
+            subMenu.classList.remove('active');
+        }, 100); // 약간의 여유 시간
+    });
+    
+    // 서브메뉴에 마우스 올렸을 때도 유지
+    subMenu.addEventListener('mouseenter', function() {
+        clearTimeout(timeoutId);
+        subMenu.classList.add('active');
+    });
+    
+    subMenu.addEventListener('mouseleave', function() {
+        subMenu.classList.remove('active');
+    });
+});
