@@ -399,25 +399,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // MESSAGE → LOVE_TANK
+    // MESSAGE → LOVE_TANK 부분에 비디오 재설정 추가
     if (messageGoBtn) {
         messageGoBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
 
-            // ✅ 메시지 입력값 가져오기
             const message1Input = document.getElementById('message1');
             const message2Input = document.getElementById('message2');
             const user1Message = message1Input?.value.trim();
             const user2Message = message2Input?.value.trim();
 
-            // ✅ 메시지가 입력되지 않은 경우 경고
             if (!user1Message || !user2Message) {
                 alert('두 사용자의 메시지를 모두 입력해주세요.');
                 return;
             }
 
-            // ✅ localStorage에 메시지 저장
             localStorage.setItem('user1Message', user1Message);
             localStorage.setItem('user2Message', user2Message);
 
@@ -425,7 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const next = current?.nextElementSibling;
             if (!next) return;
 
-            // 현재 섹션 페이드아웃
             current.style.transition = 'opacity 0.5s ease';
             current.style.opacity = '0';
 
@@ -433,10 +429,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 current.classList.remove('active');
                 current.style.display = 'none';
 
-                // 다음 섹션 등장
                 next.style.display = 'flex';
                 next.style.opacity = '0';
                 next.classList.add('active');
+
+                // ✅ 비디오 재설정 추가
+                setupTankVideo(); // 비디오 소스 재설정
+                
+                const tankVideo = document.querySelector('.tank_motion video');
+                if (tankVideo) {
+                    // 비디오 재생 (약간의 딜레이 후)
+                    setTimeout(() => {
+                        tankVideo.play().catch(err => {
+                            console.error('Video play error:', err);
+                        });
+                    }, 100);
+                }
 
                 setTimeout(() => {
                     next.style.transition = 'opacity 0.5s ease';
@@ -713,6 +721,80 @@ function calculateAndApplyLoveLanguage() {
     }
 }
 
+// ✅ 비디오 소스 설정 함수
+function setupTankVideo() {
+    const tankVideo = document.querySelector('.tank_motion video');
+    console.log('=== 비디오 설정 시작 ===');
+    
+    if (!tankVideo) {
+        console.error('tankVideo element not found!');
+        return;
+    }
+    
+    const user1Icon = localStorage.getItem('user1Icon');
+    const user2Icon = localStorage.getItem('user2Icon');
+    
+    console.log('User1 Icon Path:', user1Icon);
+    console.log('User2 Icon Path:', user2Icon);
+    
+    if (!user1Icon || !user2Icon) {
+        console.warn('Icon data missing, using default video');
+        tankVideo.src = './video/heart_heart.mp4';
+        tankVideo.load();
+        return;
+    }
+    
+    const getIconName = (iconPath) => {
+        const match = iconPath.match(/3d\d+_(\w+)\./);
+        return match ? match[1] : 'heart';
+    };
+    
+    const icon1Name = getIconName(user1Icon);
+    const icon2Name = getIconName(user2Icon);
+    
+    console.log('Extracted icon names - User1:', icon1Name, 'User2:', icon2Name);
+    
+    const videoMap = {
+        'heart-heart': 'heart_heart.mp4',
+        'arrow-arrow': 'arrow_arrow.mp4',
+        'wing-wing': 'wing_wing.mp4',
+        'hand-hand': 'hand_hand.mp4',
+        'ribbon-ribbon': 'ribbon_ribbon.mp4',
+        'arrow-heart': 'arrow_heart.mp4',
+        'heart-arrow': 'arrow_heart.mp4',
+        'heart-wing': 'heart_wing.mp4',
+        'wing-heart': 'heart_wing.mp4',
+        'hand-heart': 'hand_heart.mp4',
+        'heart-hand': 'hand_heart.mp4',
+        'heart-ribbon': 'heart_ribbon.mp4',
+        'ribbon-heart': 'heart_ribbon.mp4',
+        'arrow-wing': 'arrow_wing.mp4',
+        'wing-arrow': 'arrow_wing.mp4',
+        'arrow-hand': 'arrow_hand.mp4',
+        'hand-arrow': 'arrow_hand.mp4',
+        'arrow-ribbon': 'arrow_ribbon.mp4',
+        'ribbon-arrow': 'arrow_ribbon.mp4',
+        'hand-wing': 'hand_wing.mp4',
+        'wing-hand': 'hand_wing.mp4',
+        'ribbon-wing': 'ribbon_wing.mp4',
+        'wing-ribbon': 'ribbon_wing.mp4',
+        'hand-ribbon': 'hand_ribbon.mp4',
+        'ribbon-hand': 'hand_ribbon.mp4'
+    };
+    
+    const combinationKey = `${icon1Name}-${icon2Name}`;
+    const videoFileName = videoMap[combinationKey] || 'heart_heart.mp4';
+    const videoPath = `./video/${videoFileName}`;
+    
+    console.log('Combination key:', combinationKey);
+    console.log('Selected video:', videoPath);
+    
+    tankVideo.src = videoPath;
+    tankVideo.load();
+    console.log('비디오 소스 설정 완료!');
+    console.log('======================');
+}
+
 // love_tank 섹션 진입 감지 및 비디오 재생, user_result_wrap 페이드인 처리
 document.addEventListener('DOMContentLoaded', function() {
     const loveTankSection = document.querySelector('.love_tank');
@@ -763,6 +845,9 @@ document.addEventListener('DOMContentLoaded', function() {
             span.textContent = user2Name;
             span.style.fontFamily = `'LUV_${loveLanguageInfo[user2Lang].font}', sans-serif`;
         });
+        
+        // ✅ URL 파라미터로 접근 시에도 비디오 설정
+        setupTankVideo();
     }
     
     // user_result_wrap 초기 상태 설정
@@ -770,95 +855,6 @@ document.addEventListener('DOMContentLoaded', function() {
         userResultWrap.style.opacity = '0';
         userResultWrap.style.transition = 'opacity 1s ease-in-out';
     }
-    
-    // ✅ 비디오 소스를 먼저 설정 (섹션 진입 전에)
-    console.log('=== 비디오 선택 시작 ===');
-    console.log('tankVideo element:', tankVideo);
-    
-    const user1Icon = localStorage.getItem('user1Icon');
-    const user2Icon = localStorage.getItem('user2Icon');
-    
-    console.log('User1 Icon Path:', user1Icon);
-    console.log('User2 Icon Path:', user2Icon);
-    
-    if (tankVideo && user1Icon && user2Icon) {
-        // 아이콘 경로에서 아이콘 이름 추출 (heart, arrow, wing, hand, ribbon)
-        const getIconName = (iconPath) => {
-            console.log('Parsing icon path:', iconPath);
-            // 3d01_heart.png, 3d02_arrow.png 등에서 이름 추출
-            const match = iconPath.match(/3d\d+_(\w+)\./);
-            console.log('Match result:', match);
-            return match ? match[1] : 'heart'; // 기본값 heart
-        };
-        
-        const icon1Name = getIconName(user1Icon); // heart, arrow, wing, hand, ribbon
-        const icon2Name = getIconName(user2Icon);
-        
-        console.log('Extracted icon names - User1:', icon1Name, 'User2:', icon2Name);
-        
-        // ✅ 하드코딩 비디오 매핑 (확실하게!)
-        const videoMap = {
-            // 같은 조합
-            'heart-heart': 'heart_heart.mp4',
-            'arrow-arrow': 'arrow_arrow.mp4',
-            'wing-wing': 'wing_wing.mp4',
-            'hand-hand': 'hand_hand.mp4',
-            'ribbon-ribbon': 'ribbon_ribbon.mp4',
-            
-            // 다른 조합 (알파벳 순서)
-            'arrow-heart': 'arrow_heart.mp4',
-            'heart-arrow': 'arrow_heart.mp4',
-            
-            'heart-wing': 'heart_wing.mp4',
-            'wing-heart': 'heart_wing.mp4',
-            
-            'hand-heart': 'hand_heart.mp4',
-            'heart-hand': 'hand_heart.mp4',
-            
-            'heart-ribbon': 'heart_ribbon.mp4',
-            'ribbon-heart': 'heart_ribbon.mp4',
-            
-            'arrow-wing': 'arrow_wing.mp4',
-            'wing-arrow': 'arrow_wing.mp4',
-            
-            'arrow-hand': 'arrow_hand.mp4',
-            'hand-arrow': 'arrow_hand.mp4',
-            
-            'arrow-ribbon': 'arrow_ribbon.mp4',
-            'ribbon-arrow': 'arrow_ribbon.mp4',
-            
-            'hand-wing': 'hand_wing.mp4',
-            'wing-hand': 'hand_wing.mp4',
-            
-            'ribbon-wing': 'ribbon_wing.mp4',
-            'wing-ribbon': 'ribbon_wing.mp4',
-            
-            'hand-ribbon': 'hand_ribbon.mp4',
-            'ribbon-hand': 'hand_ribbon.mp4'
-        };
-        
-        const combinationKey = `${icon1Name}-${icon2Name}`;
-        const videoFileName = videoMap[combinationKey] || 'heart_heart.mp4'; // 기본값
-        const videoPath = `./video/${videoFileName}`;
-        
-        console.log('Combination key:', combinationKey);
-        console.log('Selected video file:', videoFileName);
-        console.log('Final video path:', videoPath);
-        
-        // ✅ 비디오 설정
-        tankVideo.pause();
-        tankVideo.removeAttribute('src');
-        tankVideo.load();
-        tankVideo.src = videoPath;
-        tankVideo.load();
-        console.log('Video source updated!');
-    } else {
-        console.log('Missing data!');
-        console.log('- tankVideo:', tankVideo);
-        console.log('- user1Icon:', user1Icon);
-        console.log('- user2Icon:', user2Icon);
-    }
-    console.log('======================');
     
     // Intersection Observer로 섹션 진입 감지
     const observer = new IntersectionObserver((entries) => {
