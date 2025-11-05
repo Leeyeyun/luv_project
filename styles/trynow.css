@@ -338,6 +338,9 @@ main .text-display {
 #fontPreview:focus {
     outline: none;
 }
+#fontPreview * {
+  font-family: inherit;
+}
 
 
 /* 추천 문구 리스트 */
