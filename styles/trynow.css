@@ -305,7 +305,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
 /* 메인 콘텐츠 */
 main .text-display {
-    max-width: 1200px;
+    max-width: 1400px;
     height:100vh;
     text-align: center;
     display:flex;
