@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', function() {
         fontPreview.textContent = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
         
         // 스타일 초기화
-        fontPreview.style.fontSize = '110px';
+        fontPreview.style.fontSize = '100px';
         fontPreview.style.letterSpacing = '0px';
         fontPreview.style.lineHeight = '1.2';
         fontPreview.style.textAlign = 'center';
         fontPreview.style.textTransform = 'none';
         
         // 슬라이더 값 초기화
-        fontSize.value = 110;
+        fontSize.value = 100;
         letterSpacing.value = 0;
         lineHeight.value = 1.2;
-        sizeValue.textContent = '110px';
+        sizeValue.textContent = '100px';
         spacingValue.textContent = '0px';
         lineHeightValue.textContent = '1.2';
         
