@@ -668,3 +668,27 @@ main .love_tank .user_result_wrap .tank_desc p:last-child {
     font-size:0.875rem; margin-top:10px;
     line-height:1.2; font-weight:200;
 }
+
+main .love_tank > .goto_btn {
+    position:absolute; right:5%; bottom:5%;
+    width:max-content;
+    transition:all 0.5s ease;
+}
+main .love_tank > .goto_btn > button {
+    all: unset;              /* 가능한 모든 기본 스타일 제거 */
+    display:flex; align-items:center; justify-content:center;
+    box-sizing: border-box;  /* 크기 계산 안정화 */
+    cursor: pointer;         /* 클릭 가능한 손모양 커서 유지 */
+    width:max-content;
+}
+main .love_tank > .goto_btn > button > img {
+    filter:invert(1); width:40px; height:40px; margin-right:20px;
+}
+main .love_tank > .goto_btn > button > span {
+    font-family: 'PPMonumentWide', sans-serif;
+    font-size:2rem; letter-spacing:-0.5px;
+    color:#fff; line-height:40px;
+}
+main .love_tank > .goto_btn:hover {
+    right:4.6%; opacity:0.5;
+}

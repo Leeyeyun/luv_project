@@ -785,12 +785,12 @@ function setupTankVideo() {
         'wing-wing': 'wing_wing.mp4',
         'hand-hand': 'hand_hand.mp4',
         'ribbon-ribbon': 'ribbon_ribbon.mp4',
-        'arrow-heart': 'arrow_heart.mp4',
-        'heart-arrow': 'arrow_heart.mp4',
+        'arrow-heart': 'heart_arrow.mp4',
+        'heart-arrow': 'heart_arrow.mp4',
         'heart-wing': 'heart_wing.mp4',
         'wing-heart': 'heart_wing.mp4',
-        'hand-heart': 'hand_heart.mp4',
-        'heart-hand': 'hand_heart.mp4',
+        'hand-heart': 'heart_hand.mp4',
+        'heart-hand': 'heart_hand.mp4',
         'heart-ribbon': 'heart_ribbon.mp4',
         'ribbon-heart': 'heart_ribbon.mp4',
         'arrow-wing': 'arrow_wing.mp4',
@@ -801,8 +801,8 @@ function setupTankVideo() {
         'ribbon-arrow': 'arrow_ribbon.mp4',
         'hand-wing': 'hand_wing.mp4',
         'wing-hand': 'hand_wing.mp4',
-        'ribbon-wing': 'ribbon_wing.mp4',
-        'wing-ribbon': 'ribbon_wing.mp4',
+        'ribbon-wing': 'wing_ribbon.mp4',
+        'wing-ribbon': 'wing_ribbon.mp4',
         'hand-ribbon': 'hand_ribbon.mp4',
         'ribbon-hand': 'hand_ribbon.mp4'
     };
@@ -965,4 +965,10 @@ document.addEventListener('DOMContentLoaded', function() {
         writedMessages[0].textContent = user1Message;
         writedMessages[1].textContent = user2Message;
     }
+});
+
+
+
+document.querySelector('.goto_btn button').addEventListener('click', () => {
+    window.location.href = './index.html';
 });
