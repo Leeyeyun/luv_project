@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         e.stopPropagation();
 
+        // ✅ 이전 메시지 기록만 초기화
+        localStorage.removeItem('user1Message');
+        localStorage.removeItem('user2Message');
+
         const current = startBtn.closest('section');
         const next = current?.nextElementSibling;
         if (!next) return;
@@ -453,6 +457,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         });
     }
+
+    // ✅ 메시지 입력 실시간 반영 및 저장
+    const messageInputs = document.querySelectorAll('#message_form input');
+    const writedMessages = document.querySelectorAll('.writedMessage');
+
+    messageInputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+        const message = input.value.trim();
+
+        // 콘솔에 표시
+        console.log(`User${index + 1} Message:`, message);
+
+        // localStorage에 실시간 덮어쓰기
+        localStorage.setItem(`user${index + 1}Message`, message);
+
+        // 감정탱크 메시지 즉시 반영 (writedMessage 영역)
+        if (writedMessages[index]) {
+        writedMessages[index].textContent = message || ''; // 공백이면 비움
+        }
+    });
+    });
 });
 
 
